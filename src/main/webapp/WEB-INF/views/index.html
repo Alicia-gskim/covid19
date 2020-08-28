@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <!-- saved from url=(0032)http://answerny.ai/corona19.html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
 
-<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
-<meta property="og:image" content="https://answerny.ai/img/chatbot_corona19_2.png">
-<title>코로나19 예방을 위한 공익 챗봇 서비스!</title>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+	<meta property="og:image" content="https://answerny.ai/img/chatbot_corona19_2.png">
+	<title>코로나19 예방을 위한 공익 챗봇 서비스!</title>
 	<link rel="icon" type="image/png" sizes="32x32" href="http://answerny.ai/img/gui1.png">
 	<link rel="apple-touch-icon" href="http://answerny.ai/img/gui1.png">
-    <link href="./assets/css/autoComplete_corona.css" rel="stylesheet" type="text/css">
-    <link href="./assets/css/swiper.min_corona.css" rel="stylesheet" type="text/css">
-    <link href="./assets/css/corona.css" rel="stylesheet" type="text/css">
-    <link href="./assets/css/default_corona.css" rel="stylesheet" type="text/css">
-	<script type="text/javascript" async="" src="./assets/js/analytics.js"></script><script type="text/javascript" src="./assets/js/jquery-latest.min.js"></script>
+
+	<link href="./assets/css/reset.css" rel="stylesheet" type="text/css">
+	<link href="./assets/css/autoComplete.css" rel="stylesheet" type="text/css">
+	<link href="./assets/css/swiper.min.css" rel="stylesheet" type="text/css">
+
+	<link href="./assets/css/content.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" async="" src="./assets/js/analytics.js"></script>
+	<script type="text/javascript" src="./assets/js/jquery-latest.min.js"></script>
 	<script type="text/javascript" src="./assets/js/async.min.js"></script>
 	<script type="text/javascript" src="./assets/js/swiper.min.js"></script>
 	<script type="text/javascript" src="./assets/js/corona.js"></script>
@@ -21,84 +27,161 @@
 	<script async="" src="./assets/js/js.js"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
 		gtag('js', new Date());
 		gtag('config', 'UA-158723887-1');
 	</script>
 
-<script style="display: none;">var tvt = tvt || {}; tvt.captureVariables = function(a){for(var b=
-new Date,c={},d=Object.keys(a||{}),e=0,f;f=d[e];e++)if(a.hasOwnProperty(f)&&"undefined"!=typeof a[f])try{var g=[];c[f]=JSON.stringify(a[f],function(l,t){try{if("function"!==typeof t){if("object"===typeof t&&null!==t){if(t instanceof HTMLElement||t instanceof Node||-1!=g.indexOf(t))return;g.push(t)}return t}}catch(A){}})}catch(l){}a=document.createEvent("CustomEvent");a.initCustomEvent("TvtRetrievedVariablesEvent",!0,!0,{variables:c,date:b});window.dispatchEvent(a)};window.setTimeout(function() {tvt.captureVariables({'dataLayer.hide': (function(a){a=a.split(".");for(var b=window,c=0;c<a.length&&(b=b[a[c]],b);c++);return b})('dataLayer.hide'),'gaData': window['gaData'],'dataLayer': window['dataLayer']})}, 2000);</script></head>
+	<script style="display: none;">
+		var tvt = tvt || {};
+		tvt.captureVariables = function (a) {
+			for (var b =
+					new Date, c = {}, d = Object.keys(a || {}), e = 0, f; f = d[e]; e++)
+				if (a.hasOwnProperty(f) && "undefined" != typeof a[f]) try {
+					var g = [];
+					c[f] = JSON.stringify(a[f], function (l, t) {
+						try {
+							if ("function" !== typeof t) {
+								if ("object" === typeof t && null !== t) {
+									if (t instanceof HTMLElement || t instanceof Node || -1 != g.indexOf(t))
+										return;
+									g.push(t)
+								}
+								return t
+							}
+						} catch (A) {}
+					})
+				} catch (l) {}
+			a = document.createEvent("CustomEvent");
+			a.initCustomEvent("TvtRetrievedVariablesEvent", !0, !0, {
+				variables: c,
+				date: b
+			});
+			window.dispatchEvent(a)
+		};
+		window.setTimeout(function () {
+			tvt.captureVariables({
+				'dataLayer.hide': (function (a) {
+					a = a.split(".");
+					for (var b = window, c = 0; c < a.length && (b = b[a[c]], b); c++);
+					return b
+				})('dataLayer.hide'),
+				'gaData': window['gaData'],
+				'dataLayer': window['dataLayer']
+			})
+		}, 2000);
+	</script>
+</head>
+
 <body>
-<script type="text/javascript">
-	$(document).ready(function(){
-		if($.cookie('popup') == 'corona'){
-			$(".mainguide").hide();
-		}
-		$('#noticeOnOff').click(function(){
-			if($(this).hasClass('close')){
-				$(this).removeClass('close');
-				$(this).addClass('open');
-				$(this).find('img').attr("src","img/dropdown_down.png");
-				$('#notice_list').hide();
-				$('.search_boxs').css('margin-top','51px');
+	<script type="text/javascript">
+		$(document).ready(function () {
+			if ($.cookie('popup') == 'corona') {
+				$(".mainguide").hide();
 			}
-			else{
-				$(this).removeClass('open');
-				$(this).addClass('close');
-				$(this).find('img').attr("src","img/dropdown_up.png");
-				$('#notice_list').show();
-				$('.search_boxs').css('margin-top','203px');
-			}
+			$('#noticeOnOff').click(function () {
+				if ($(this).hasClass('close')) {
+					$(this).removeClass('close');
+					$(this).addClass('open');
+					$(this).find('img').attr("src", "img/dropdown_down.png");
+					$('#notice_list').hide();
+					$('.search_boxs').css('margin-top', '51px');
+				} else {
+					$(this).removeClass('open');
+					$(this).addClass('close');
+					$(this).find('img').attr("src", "img/dropdown_up.png");
+					$('#notice_list').show();
+					$('.search_boxs').css('margin-top', '203px');
+				}
+			});
 		});
-	});	
-	function guideOpen(){
-		$(".mainguide").show();
-	}
-	function guideClose(){
-		$(".mainguide").hide();
-	}
-	function guideNever(){
-		if($.cookie('popup') == 'corona'){
-			$(".mainguide").hide();
-		}else{
-			$.cookie('popup', 'corona',{ expires: 1});
+
+		function guideOpen() {
+			$(".mainguide").show();
+		}
+
+		function guideClose() {
 			$(".mainguide").hide();
 		}
-	}
-</script>
+
+		function guideNever() {
+			if ($.cookie('popup') == 'corona') {
+				$(".mainguide").hide();
+			} else {
+				$.cookie('popup', 'corona', {
+					expires: 1
+				});
+				$(".mainguide").hide();
+			}
+		}
+	</script>
+
 	<div class="demoview">
-	<div class="wrap">
-		<div>
-			<div class="mainguide" style="display: none;">
-				<div class="guideimg">
-					<div class="banner">
-						<a href="http://www.wisenut.com/" target="_blank">
-							<img class="banner_left" src="./assets/images/wisenutlogo.png">
-						</a>
-						<a href="https://answerny.ai/" target="_blank">
-							<img class="banner_right" src="./assets/images/answernylogo.png">
-						</a>
+		<div class="wrap">
+			<div>
+				<div class="mainguide" style="display: none;">
+					<div class="guideimg">
+						<div class="banner">
+							<a href="http://www.wisenut.com/" target="_blank">
+								<img class="banner_left" src="./assets/images/wisenutlogo.png">
+							</a>
+							<a href="https://answerny.ai/" target="_blank">
+								<img class="banner_right" src="./assets/images/answernylogo.png">
+							</a>
+						</div>
 					</div>
+					<h1 class="btnguide">
+						<img class="_never" src="./assets/images/g_4.png" onclick="guideNever()">
+						<img class="_close" src="./assets/images/g_5.png" onclick="guideClose()">
+					</h1>
 				</div>
-				<h1 class="btnguide">
-					<img class="_never" src="./assets/images/g_4.png" onclick="guideNever()">
-					<img class="_close" src="./assets/images/g_5.png" onclick="guideClose()">
-				</h1> 
 			</div>
 		</div>
-		
-		
-		<div class="search_top">			
-			<h1>
-				<!--<a href="#"><img src="http://answerny.ai/chatbot/projects/mju/image/menu.png" class="menu" ></a>-->
-				<img src="./assets/images/icon.png" class="logo_img">
-				코로나19 챗봇<sup style="color:#F37058;font-size:10px">BETA</sup>
-				<a href="http://answerny.ai/corona19.html#"><img src="./assets/images/guide_btn.png" class="chatbotClose" onclick="javascript:guideOpen();"></a>
-			</h1>
+	</div>
+	<!-- header -->
+	<header>
+		<div class="header">
+			<h1>코로나 알림이</h1>
+			<div class="header__guide"><button type="button"><img src="./assets/images/guide_btn.png"
+						onclick="javascript:guideOpen();"></button></div>
 		</div>
-		
-		<div class="search_result">
-			<div class="search_boxs" style="background-color:#FFFFFF;">
+		<div class="covid">
+			<div class="total">
+				국내 누적 확진환자
+				<span class="total__number" id="notice_total">18,265</span>
+				<span class="increase" id="notice_increase">(+320)</span>
+				<span class="set_time" id="notice_time">20. 8. 26. (수) 00시 기준</span>
+			</div>
+			<div class="dashboard">
+				<div class="covid__box ing">
+					<p class="title">치료중</p>
+					<p class="number">4,210<span class="percent">(22.1%)</span></p>
+					<div class="plusnumber">+278</div>
+				</div>
+				<div class="covid__box end">
+					<p class="title">격리해제</p>
+					<p class="number">14,551<span class="percent">(76.3%)</span></p>
+					<div class="plusnumber">+90</div>
+				</div>
+				<div class="covid__box deth">
+					<p class="title">사망자</p>
+					<p class="number">316<span class="percent">(1.7%)</span></p>
+					<div class="plusnumber">+3</div>
+				</div>
+			</div>
+			<div class="inspection">
+				<p>검사 중 <span id="tests_number">52,795</span> <span id="tests_increase">(+2,433)</span></p>
+			</div>
+		</div>
+		<p class="info" id="notice_text">*질병관리본부 발표 후 1-2시간 이내에 업데이트되며,증감수는 전일 00시 대비입니다.</p>
+	</header>
+	<!-- //header -->
+
+	<!-- <div class="search_result">
+			<div class="search_boxs" >
 				<div class="box_wrap">
 					<ul class="answer_box">
 					</ul>
@@ -107,16 +190,88 @@ new Date,c={},d=Object.keys(a||{}),e=0,f;f=d[e];e++)if(a.hasOwnProperty(f)&&"und
 					<ul class="question_box">
 					</ul>
 				</div> 
-	        <div class="box_wrap"><ul class="answer_box"><li class="name"><img src="./assets/images/gui1.png" alt="" onclick="javascript:oneWayQuery(1)"></li><li class="subname">코로나19 챗봇<sup style="color:#F37058;font-size:10px">BETA</sup> </li><li class="answer">안녕하세요, 코로나19에 대해 궁금한 정보를 안내해드리는 챗봇입니다.<br>필요한 정보는 버튼을 선택하거나 질문을 직접 입력하여 확인하실 수 있습니다. <div class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-multirow"><div class="swiper-wrapper" style="width: 656px; transform: translate3d(0px, 0px, 0px);"><div class="swiper-slide greeting swiper-slide-active" name="greeting0" data-swiper-column="0" data-swiper-row="0" style="order: 0; width: 208.667px; margin-right: 10px;"><div class="slide-image-wrap greeting-img"><img src="./assets/images/Greeting_btn11.png" style="width:30px;height:30px;"></div><div class="slide-contents greeting-contents">지역별<br>확진자현황</div></div><div class="swiper-slide greeting swiper-slide-next" name="greeting0" data-swiper-column="0" data-swiper-row="1" style="-webkit-box-ordinal-group: 3; order: 3; margin-top: 10px; width: 208.667px; margin-right: 10px;"><div class="slide-image-wrap greeting-img"><img src="./assets/images/Greeting_btn9.png" style="width:28px;height:28px;"></div><div class="slide-contents greeting-contents">보도자료<br>정부브리핑</div></div><div class="swiper-slide greeting" name="greeting0" data-swiper-column="0" data-swiper-row="2" style="-webkit-box-ordinal-group: 6; order: 6; margin-top: 10px; width: 208.667px; margin-right: 10px;"><div class="slide-image-wrap greeting-img"><img src="./assets/images/Greeting_btn_factcheck.png" style="width:28px;height:28px;"></div><div class="slide-contents greeting-contents">사실은<br>이렇습니다</div></div><div class="swiper-slide greeting" name="greeting0" data-swiper-column="1" data-swiper-row="0" style="-webkit-box-ordinal-group: 1; order: 1; width: 208.667px; margin-right: 10px;"><div class="slide-image-wrap greeting-img"><img src="./assets/images/Greeting_btn10.png" style="width:30px;height:30px;"></div><div class="slide-contents greeting-contents">대상별<br>맞춤정보</div></div><div class="swiper-slide greeting" name="greeting0" data-swiper-column="1" data-swiper-row="1" style="-webkit-box-ordinal-group: 4; order: 4; margin-top: 10px; width: 208.667px; margin-right: 10px;"><div class="slide-image-wrap greeting-img"><img src="./assets/images/Greeting_btn2.png" style="width:28px;height:28px;"></div><div class="slide-contents greeting-contents">선별진료소<br>정보확인</div></div><div class="swiper-slide greeting" name="greeting0" data-swiper-column="1" data-swiper-row="2" style="-webkit-box-ordinal-group: 7; order: 7; margin-top: 10px; width: 208.667px; margin-right: 10px;"><div class="slide-image-wrap greeting-img"><img src="./assets/images/Greeting_btn12.png" style="width:30px;height:30px;"></div><div class="slide-contents greeting-contents">공적마스크<br>관련 정보</div></div><div class="swiper-slide greeting" name="greeting0" data-swiper-column="2" data-swiper-row="0" style="-webkit-box-ordinal-group: 2; order: 2; width: 208.667px; margin-right: 10px;"><div class="slide-image-wrap greeting-img"><img src="./assets/images/Greeting_btn1.png" style="width:28px;height:28px;"></div><div class="slide-contents greeting-contents">국외현황<br>정보확인</div></div></div><div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1"></span></div><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div><br><div style="font-size:11px;">정보 출처 : <a href="javascript:moveToUrl(&#39;http://www.cdc.go.kr/cdc/&#39;)" class="btn2 type_b" style="text-decoration:underline;color:#0040ff;">질병관리본부,</a><a href="javascript:moveToUrl(&#39;http://ncov.mohw.go.kr/index_main.jsp&#39;)" class="btn2 type_b" style="text-decoration:underline;color:#0040ff;">코로나바이러스감염증-19(COVID-19)</a></div></li><li class="time">오후 10:50</li></ul></div></div>
-	        <!-- alert_box -->
-		<dl class="alert_box">
+				-->
+	<div class="box_wrap">
+		<div class="answer">
+			<p class="answer__img"><img src="./assets/images/gui1.png" alt="" onclick="javascript:oneWayQuery(1)"></p>
+			<div class="answer__content">
+				<p class="answer__name">코로나알림이</p>
+				<div class="answer__ask">
+					안녕하세요, 코로나19에 대해 궁금한 정보를 안내해드리는 챗봇입니다.<br>
+					필요한 정보는 버튼을 선택하거나 질문을 직접 입력하여 확인하실 수 있습니다.
+					<div class="btn_wrap">
+						<div class="btn_cover">
+							<div class="btn_box">
+								<div class="greeting-img">
+									<img src="./assets/images/Greeting_btn11.png">
+								</div>
+								<div class="greeting-contents">지역별<br>확진자현황</div>
+							</div>
+							<div class="btn_box">
+								<div class="greeting-img">
+									<img src="./assets/images/Greeting_btn9.png">
+								</div>
+								<div class="greeting-contents">보도자료<br>정부브리핑</div>
+							</div>
+							<div class="btn_box">
+								<div class="greeting-img">
+									<img src="./assets/images/Greeting_btn_factcheck.png">
+								</div>
+								<div class="greeting-contents">사실은<br>이렇습니다</div>
+							</div>
+							<div class="btn_box">
+								<div class="greeting-img">
+									<img src="./assets/images/Greeting_btn10.png">
+								</div>
+								<div class="greeting-contents">대상별<br>맞춤정보</div>
+							</div>
+							<div class="btn_box">
+								<div class="greeting-img">
+									<img src="./assets/images/Greeting_btn2.png">
+								</div>
+								<div class="greeting-contents">선별진료소<br>정보확인</div>
+							</div>
+							<div class="btn_box">
+								<div class="greeting-img">
+									<img src="./assets/images/Greeting_btn12.png">
+								</div>
+								<div class="greeting-contents">공적마스크<br>관련 정보</div>
+							</div>
+							<div class="btn_box">
+								<div class="greeting-img">
+									<img src="./assets/images/Greeting_btn1.png">
+								</div>
+								<div class="greeting-contents">국외현황<br>정보확인</div>
+							</div>
+						</div>
+					</div>
+					<div>정보 출처 : <a href="javascript:moveToUrl(&#39;http://www.cdc.go.kr/cdc/&#39;)"
+							class="btn2 type_b" style="text-decoration:underline;color:#0040ff;">질병관리본부,</a><a
+							href="javascript:moveToUrl(&#39;http://ncov.mohw.go.kr/index_main.jsp&#39;)" class="btn2 type_b"
+							style="text-decoration:underline;color:#0040ff;">코로나바이러스감염증-19(COVID-19)</a></div>
+				</div>
+				<p class="answer__time">오후 10:50</p>
+			</div>
+		</div>
+		<!-- <ul class="answer_box">
+			<li class="name">
+				
+			</li>
+			<li class="subname">코로나19 챗봇<sup style="color:#F37058;font-size:10px">BETA</sup>
+			</li>
+			<li class="answer">
+				
+			</li>
+			<li class="time">오후 10:50</li>
+		</ul> -->
+	</div>
+	<!-- </div> -->
+
+	<!-- <dl class="alert_box">
 			<dt>
 				국내 누적 확진환자 <span class="total" id="notice_total">18,265</span><span class="increase" id="notice_increase">(+320)</span> <span class="set_time" id="notice_time">20. 8. 26. (수) 00시 기준</span>
 				<span class="btn"><span class="close" id="noticeOnOff"><img src="./assets/images/dropdown_up.png"></span></span>
 				
-				<!-- 버튼 닫기 버튼			
-				<span class="btn close"><img src="img/dropdown_up.png"></span>
-				-->
 			</dt>
 			<dd class="tit_list" id="notice_list">
 				<ul>
@@ -148,24 +303,26 @@ new Date,c={},d=Object.keys(a||{}),e=0,f;f=d[e];e++)if(a.hasOwnProperty(f)&&"und
 				<p class="chk">검사 중 <span id="tests_number" style="font-size:14px;">52,795</span> <span id="tests_increase">(+2,433)</span></p>
 				<p class="info" id="notice_text">*질병관리본부 발표 후 1-2시간 이내에 업데이트되며,증감수는 전일 00시 대비입니다.</p>
 			</dd>
-		</dl>
-		<!--//alert_box -->
-		
-		</div>
-		<div class="search_bottom">
-			<form id="question_frm" name="question_frm" method="POST" action="javascript:doQuestion()">
-			<div class="input_box">
-				<input type="text" class="quesion_input" name="sentence" id="sentence" onkeypress="if(event.keyCode==13) {doQuestion(); return false;}">
+		</dl>  -->
+	<!--//alert_box -->
+
+	<!-- </div> -->
+	<div class="search">
+		<form id="question_frm" name="question_frm" method="POST" action="javascript:doQuestion()">
+			<div class="search__wrap">
+				<input type="text" class="quesion_input" name="sentence" id="sentence"
+					onkeypress="if(event.keyCode==13) {doQuestion(); return false;}">
 				<input type="text" hidden="hidden" id="hidden_query">
-				<a href="http://answerny.ai/corona19.html#" class="btn_send_thema" onclick="javascript:doQuestion();">
-					<img src="./assets/images/send.png">
-				</a>
+				<button type="submit" class="btn_send_thema" onclick="javascript:doQuestion();">
+					SEND
+				</button>
 			</div>
-
-			</form>
-		</div>
+		</form>
 	</div>
 	</div>
+	</div>
 
 
-</body></html>
+</body>
+
+</html>

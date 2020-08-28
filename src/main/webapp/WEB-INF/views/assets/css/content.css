@@ -48,18 +48,62 @@
 .alert_box .tit_list .info{font-size:9px;text-align:left;height:28px;line-height:26px;padding-left: 8px;}
 
 
+/* ㅗㄷㅁㅇㄷㄱ */
+header{position:fixed;top:0;width:100%; z-index:100}
+.header{position:relative;}
+.header .header__guide{width:3.6111vw;position:absolute;top:50%;;right:4.1667vw;transform:translateY(-50%);}
+.header h1{box-sizing:border-box;padding:2.0833vw 0;line-height:3.8889vw;font-size:3.6111vw; font-weight:bold; color:#000; background-color:#fff; text-align:center;border: 1px solid #E8E9ED;padding-right: 0px;} 
+
+header .total{height:4.1667vw;line-height:4.1667vw;;text-align:center;background:#222;font-size:2.2222vw;color:#fff;font-weight:bold;}
+header .total .increase,header .total .total__number{color:#ffd966;}
+header .total .set_time{font-size:1.6667vw;}
+
+.dashboard{display:flex;align-items: center;justify-content: space-between;background:#f5f5f5;padding:2.0833vw 0;text-align:center;}
+.dashboard .covid__box{position:relative;width:33vw;}
+.dashboard .covid__box::after{content:'';display:block;width:1px;height:80%;background:#222;position:absolute;top:50%;left:0;transform:translateY(-50%)}
+.dashboard .covid__box:first-child::after{display: none;;}
+.dashboard .title{font-size:2.5000vw;font-weight:bold;}
+.dashboard .number{font-size:2.0833vw;padding-top:0.6944vw;}
+.dashboard .plusnumber{font-size:1.6667vw;padding-top:0.6944vw;}
+.dashboard .ing .title,.dashboard .ing .number{color:#E83612;}
+.dashboard .end .title,.dashboard .end .number{color:#0051B4;}
+.dashboard .dath .title,.dashboard .dath .number{color:#000;}
+
+header .inspection{height:4.1667vw;line-height:4.1667vw;font-size:1.9444vw;text-align:center;border-top:1px solid #ddd;border-bottom:1px solid #ddd;background:#f5f5f5;}
+header .info{font-size:1.6667vw;padding:1.3333vw 0;background:#fff;}
 
 
+/* 채팅검색 영역 */
+.search{position:fixed;bottom:0;left:0;width:100%;background:#f5f5f5;z-index:150;padding:1.3889vw;box-sizing: border-box;}
+.search__wrap{display:flex;}
+.search__wrap input{width:calc(100% - 15vw);border:1px solid #ddd;border-radius:0.9722vw 0 0 0.9722vw;border-right:0;height:4.1667vw;line-height:4.1667vw;}
+.search__wrap button{display:inline-block;width:15vw;text-align:center;height:4.4444vw;line-height:4.44447vw;border:1px solid #ddd;box-shadow:1px 10px 1px rgba{0, 0, 0, 0.3};}
 
-.search_top{position:fixed;top:0;width:100%; z-index:50}
-.search_top .guide{width:26px; float:left; }
- .search_top h1{box-sizing:border-box;padding:10px 15px;line-height:26px;font-size:1.25em; font-weight:bold; color:#000000; background-color:#FFFFFF; text-align:center;border: 1px solid #E8E9ED;padding-right: 0px;} 
-.search_top h1 .logo_img{height:27px; width:27px;padding-bottom: 3px;border-radius: 50px;} 
+
+/* answer_box */
+.box_wrap{padding-top:45.6667vw;width:91.6667vw;margin:0 auto;}
+.answer{display:flex;align-items:flex-start;justify-content:space-between;}
+.answer .answer__img{width:5.5556vw;height:5.5556vw;}
+.answer__content{width:calc(100% - 5.5556vw);padding-left:0.6944vw;}
+.answer__ask{width:83.3333vw;overflow:hidden;box-sizing: border-box;padding:2.0833vw;background:#f5f5f5;border-radius:2.0833vw;margin:1.3889vw 0;font-size:1.6667vw;}
+.answer__name{font-size:1.6667vw;color:#000;padding-left:1.1111vw;}
+.answer__time{font-size:1.6667vw;color:#646464;padding-left:1.1111vw;}
+
+.btn_wrap{padding:1.1111vw;}
+.btn_cover{font-size:0;}
+.btn_wrap .btn_box{display:inline-block;width:24.6611vw;background:#fff;margin-left:1.3889vw;display:inline-flex;flex-direction: column;align-items: center;justify-content: space-around;height:29.1667vw;border:1px solid #ddd;padding:1.3889vw;box-sizing: border-box;border-radius:1.3889vw;}
+.btn_wrap .btn_box:nth-child(4n),.btn_wrap .btn_box:nth-child(1){margin-left:0;}
+.btn_wrap .btn_box:nth-child(n+4){margin-top:1.3889vw;}
+.btn_wrap .btn_box .greeting-img{width:6.9444vw;}
+.btn_wrap .btn_box .greeting-contents{width:100%;text-align:center}
+
+/* 기존 차후 삭제 */
+
 .search_result {position:absolute;top:0;left:0;overflow-y:hidden;width:100%;min-height:100%;background:#fffbf6;}
 .search_boxs{position:absolute;width:100%; top:45px; bottom:50px;overflow-x:hidden;overflow-y:scroll;margin-top:203px;}
 .search_boxs:last-child{padding-bottom: 40px;}
 
-.box_wrap{overflow: hidden;padding:10px 10px 0;}
+/* .box_wrap{overflow: hidden;padding:10px 10px 0;} */
 .box_wrap_q{overflow: hidden;padding:80px 10px 0;}
 .search_boxs .question_box{float:right;max-width:94%;margin-left: 80px;}
 .search_boxs .question_box .question{ word-wrap:break-word; margin-bottom:10px; border-radius:50px 0 50px 50px; padding:10px 15px 11px 15px;position:relative; background:#151a59; color:#FFFFFF; line-height:1.5}
