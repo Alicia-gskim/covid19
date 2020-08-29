@@ -16,7 +16,11 @@ public class HelloController {
 	
 	@RequestMapping("/hello")
 	public String hello(Model model) {
-		model.addAttribute("message", "Hello World!");
 		return "hello";
+	}
+	
+	@RequestMapping("/test")
+	public String test(Model model) {
+		return "test";
 	}
 }
