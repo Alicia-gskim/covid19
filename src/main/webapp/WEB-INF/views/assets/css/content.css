@@ -58,6 +58,25 @@ header .info{font-size:1.6667vw;padding:1.3333vw 0;background:#fff;}
 .questioner .questioner__text{font-size: 1.6667vw;padding:1.3889vw;border-radius:2.7778vw 0 2.7778vw 2.7778vw;background:#222;color:#fff;}
 .questioner__time{font-size:1.6667vw;color:#646464;padding-left:1.1111vw;}
 
+.answer__ask .country{font-size:4.8611vw;padding-bottom:2.7778vw;}
+.answer__ask .total{color:#222;font-weight:bold;font-size:2.7778vw;}
+.answer__ask .new__case{color:#E83612;font-weight:bold;font-size:2.7778vw;}
+.answer__ask .new__case span{color:#bbb;font-size:1.9444vw;}
+.answer__ask .new__case b{color:#E83612;font-weight:bold;font-size:2.7778vw;}
+.answer__ask .recovered{color:#0051B4;font-weight:bold;font-size:2.7778vw;}
+.answer__ask .death{font-weight:bold;font-size:2.7778vw;}
+.answer__ask .percent{font-size:2.7778vw;padding-bottom:2.7778vw;}
+.answer__ask .link{font-size:2.7778vw;}
+.answer__ask .link a{color:#03A9F4;padding-bottom:0.4167;border-bottom:1px solid #03A9F4}
+
+.answer__ask dl{padding-top:4.1667vw;}
+.answer__ask dt{display:inline-block;}
+.answer__ask dt a{font-size:4.1667vw;color:#03A9F4;padding-bottom:0.4167;border-bottom:1px solid #03A9F4;color:#03A9F4;}
+.answer__ask dd{margin-top:1.2500vw;font-size:3.4722vw;}
+
+.clinic .answer__info{margin-bottom:2.7778vw;}
+.clinic a{font-size:2.7778vw;color:#03A9F4;padding-bottom:0.4167;border-bottom:1px solid #03A9F4;color:#03A9F4;}
+.clinic button{width:100%;height:6.9444vw;line-height:6.9444vw;text-align:center;font-size:2.7778vw;border:1px solid #222;border-radius:1.3889vw;}
 
 
 @keyframes bouncedelay {
