@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0032)http://answerny.ai/corona19.html -->
 <html>
 
 <head>
@@ -7,7 +6,7 @@
 
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
 	<meta property="og:image" content="https://answerny.ai/img/chatbot_corona19_2.png">
-	<title>코로나19 예방을 위한 공익 챗봇 서비스!</title>
+	<title>코로나19 알림니 챗봇 서비스!</title>
 	<link rel="icon" type="image/png" sizes="32x32" href="http://answerny.ai/img/gui1.png">
 	<link rel="apple-touch-icon" href="http://answerny.ai/img/gui1.png">
 
@@ -16,131 +15,13 @@
 	<link href="./assets/css/swiper.min.css" rel="stylesheet" type="text/css">
 
 	<link href="./assets/css/content.css" rel="stylesheet" type="text/css">
-	<script type="text/javascript" async="" src="./assets/js/analytics.js"></script>
 	<script type="text/javascript" src="./assets/js/jquery-latest.min.js"></script>
 	<script type="text/javascript" src="./assets/js/async.min.js"></script>
 	<script type="text/javascript" src="./assets/js/swiper.min.js"></script>
 	<script type="text/javascript" src="./assets/js/corona.js"></script>
-	<script type="text/javascript" src="./assets/js/autoCompleteCommon.js"></script>
-	<script type="text/javascript" src="./assets/js/jquery.cookie.js"></script>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async="" src="./assets/js/js.js"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-
-		function gtag() {
-			dataLayer.push(arguments);
-		}
-		gtag('js', new Date());
-		gtag('config', 'UA-158723887-1');
-	</script>
-
-	<script style="display: none;">
-		var tvt = tvt || {};
-		tvt.captureVariables = function (a) {
-			for (var b =
-					new Date, c = {}, d = Object.keys(a || {}), e = 0, f; f = d[e]; e++)
-				if (a.hasOwnProperty(f) && "undefined" != typeof a[f]) try {
-					var g = [];
-					c[f] = JSON.stringify(a[f], function (l, t) {
-						try {
-							if ("function" !== typeof t) {
-								if ("object" === typeof t && null !== t) {
-									if (t instanceof HTMLElement || t instanceof Node || -1 != g.indexOf(t))
-										return;
-									g.push(t)
-								}
-								return t
-							}
-						} catch (A) {}
-					})
-				} catch (l) {}
-			a = document.createEvent("CustomEvent");
-			a.initCustomEvent("TvtRetrievedVariablesEvent", !0, !0, {
-				variables: c,
-				date: b
-			});
-			window.dispatchEvent(a)
-		};
-		window.setTimeout(function () {
-			tvt.captureVariables({
-				'dataLayer.hide': (function (a) {
-					a = a.split(".");
-					for (var b = window, c = 0; c < a.length && (b = b[a[c]], b); c++);
-					return b
-				})('dataLayer.hide'),
-				'gaData': window['gaData'],
-				'dataLayer': window['dataLayer']
-			})
-		}, 2000);
-	</script>
 </head>
 
 <body>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			if ($.cookie('popup') == 'corona') {
-				$(".mainguide").hide();
-			}
-			$('#noticeOnOff').click(function () {
-				if ($(this).hasClass('close')) {
-					$(this).removeClass('close');
-					$(this).addClass('open');
-					$(this).find('img').attr("src", "img/dropdown_down.png");
-					$('#notice_list').hide();
-					$('.search_boxs').css('margin-top', '51px');
-				} else {
-					$(this).removeClass('open');
-					$(this).addClass('close');
-					$(this).find('img').attr("src", "img/dropdown_up.png");
-					$('#notice_list').show();
-					$('.search_boxs').css('margin-top', '203px');
-				}
-			});
-		});
-
-		function guideOpen() {
-			$(".mainguide").show();
-		}
-
-		function guideClose() {
-			$(".mainguide").hide();
-		}
-
-		function guideNever() {
-			if ($.cookie('popup') == 'corona') {
-				$(".mainguide").hide();
-			} else {
-				$.cookie('popup', 'corona', {
-					expires: 1
-				});
-				$(".mainguide").hide();
-			}
-		}
-	</script>
-
-	<div class="demoview">
-		<div class="wrap">
-			<div>
-				<div class="mainguide" style="display: none;">
-					<div class="guideimg">
-						<div class="banner">
-							<a href="http://www.wisenut.com/" target="_blank">
-								<img class="banner_left" src="./assets/images/wisenutlogo.png">
-							</a>
-							<a href="https://answerny.ai/" target="_blank">
-								<img class="banner_right" src="./assets/images/answernylogo.png">
-							</a>
-						</div>
-					</div>
-					<h1 class="btnguide">
-						<img class="_never" src="./assets/images/g_4.png" onclick="guideNever()">
-						<img class="_close" src="./assets/images/g_5.png" onclick="guideClose()">
-					</h1>
-				</div>
-			</div>
-		</div>
-	</div>
 	<!-- header -->
 	<header>
 		<div class="header">
@@ -192,9 +73,10 @@
 				</div> 
 				-->
 	<div class="box_wrap">
+		<!-- 기본질문 -->
 		<div class="answer">
-			<p class="answer__img"><img src="./assets/images/gui1.png" alt="" onclick="javascript:oneWayQuery(1)"></p>
-			<div class="answer__content">
+			<p class="answer__img"><img src="./assets/images/gui1.png" alt="""></p>
+			<div class=" answer__content">
 				<p class="answer__name">코로나알림이</p>
 				<div class="answer__ask">
 					안녕하세요, 코로나19에 대해 궁금한 정보를 안내해드리는 챗봇입니다.<br>
@@ -245,25 +127,149 @@
 							</div>
 						</div>
 					</div>
-					<div>정보 출처 : <a href="javascript:moveToUrl(&#39;http://www.cdc.go.kr/cdc/&#39;)"
-							class="btn2 type_b" style="text-decoration:underline;color:#0040ff;">질병관리본부,</a><a
-							href="javascript:moveToUrl(&#39;http://ncov.mohw.go.kr/index_main.jsp&#39;)" class="btn2 type_b"
+					<div>정보 출처 : <a href="javascript:moveToUrl(&#39;http://www.cdc.go.kr/cdc/&#39;)" class="btn2 type_b"
+							style="text-decoration:underline;color:#0040ff;">질병관리본부,</a><a
+							href="javascript:moveToUrl(&#39;http://ncov.mohw.go.kr/index_main.jsp&#39;)"
+							class="btn2 type_b"
 							style="text-decoration:underline;color:#0040ff;">코로나바이러스감염증-19(COVID-19)</a></div>
 				</div>
 				<p class="answer__time">오후 10:50</p>
+		</div>
+		</div>
+		<!-- 질문자 -->
+		<div class="questioner">
+			<p class="questioner__text">지역별 확진자 현황</p>
+			<p class="questioner__time">오후 10:50</p>
+		</div>
+		<!-- 지역별 확진자현황 -->
+		<div class="answer">
+			<p class="answer__img"><img src="./assets/images/gui1.png" alt="""></p>
+			<div class=" answer__content">
+				<p class="answer__name">코로나알림이</p>
+				<div class="answer__ask">
+					<p class="answer__info">지역별 확진자현황을 확인할 수 있는 두 가지 방법을 안내드립니다.</p>
+					<p class="answer__info--head">지역별 현황 전체보기 선택시</p>
+					<p class="answer__info"> 17개 광역시/도별 확진환자, 의사환자 검사 현황 확인 <span>(보건복지부 운영 사이트)</span></p>
+					<p class="answer__info--head">특정 지역명 선택시</p>
+					<p class="answer__info">해당 광역시/도에서 운영하는 확진자 현황 페이지로 이동 가능</p>
+
+					<div class="btn_wrap">
+						<div class="btn_cover">
+							<a href="" class="btn_box">
+								<div class="greeting-img">
+									<img src="https://answerny.ai/img/G6_allregion.png">
+								</div>
+								<div class="greeting-contents">전체보기</div>
+							</a>
+							<a href="" class="btn_box">
+								<div class="greeting-img">
+									<img src="https://answerny.ai/img/G6_seoul.png">
+								</div>
+								<div class="greeting-contents">서울특별시</div>
+							</a>
+							<a href="" class="btn_box">
+								<div class="greeting-img">
+									<img src="https://answerny.ai/img/G6_busan.png">
+								</div>
+								<div class="greeting-contents">부산광역시</div>
+							</a>
+							<a href="" class="btn_box">
+								<div class="greeting-img">
+									<img src="https://answerny.ai/img/G6_daegu.png">
+								</div>
+								<div class="greeting-contents">대구광역시</div>
+							</a>
+							<a href="" class="btn_box">
+								<div class="greeting-img">
+									<img src="https://answerny.ai/img/G6_incheon.png">
+								</div>
+								<div class="greeting-contents">인천광역시</div>
+							</a>
+							<a href="" class="btn_box">
+								<div class="greeting-img">
+									<img src="https://answerny.ai/img/G6_gwangju.png">
+								</div>
+								<div class="greeting-contents">광주광역시</div>
+							</a>
+							<a href="" class="btn_box">
+								<div class="greeting-img">
+									<img src="https://answerny.ai/img/G6_deajun.png">
+								</div>
+								<div class="greeting-contents">대전광역시</div>
+							</a>
+							<a href="" class="btn_box">
+								<div class="greeting-img">
+									<img src="https://answerny.ai/img/G6_ulsan.png">
+								</div>
+								<div class="greeting-contents">울산광역시</div>
+							</a>
+							<a href="" class="btn_box">
+								<div class="greeting-img">
+									<img src="https://answerny.ai/img/G6_sejong.png">
+								</div>
+								<div class="greeting-contents">세종시</div>
+							</a>
+							<a href="" class="btn_box">
+								<div class="greeting-img">
+									<img src="https://answerny.ai/img/G6_gyeonggi.png">
+								</div>
+								<div class="greeting-contents">경기도</div>
+							</a>
+							<a href="" class="btn_box">
+								<div class="greeting-img">
+									<img src="https://answerny.ai/img/G6_gangwon.png">
+								</div>
+								<div class="greeting-contents">강원도</div>
+							</a>
+							<a href="" class="btn_box">
+								<div class="greeting-img">
+									<img src="https://answerny.ai/img/G6_chungbuk.png">
+								</div>
+								<div class="greeting-contents">충청북도</div>
+							</a>
+							<a href="" class="btn_box">
+								<div class="greeting-img">
+									<img src="https://answerny.ai/img/G6_chungnam.png">
+								</div>
+								<div class="greeting-contents">충청남도</div>
+							</a>
+							<a href="" class="btn_box">
+								<div class="greeting-img">
+									<img src="https://answerny.ai/img/G6_jeonbuk.png">
+								</div>
+								<div class="greeting-contents">전라북도</div>
+							</a>
+							<a href="" class="btn_box">
+								<div class="greeting-img">
+									<img src="https://answerny.ai/img/G6_jeonnam.png">
+								</div>
+								<div class="greeting-contents">전라남도</div>
+							</a>
+							<a href="" class="btn_box">
+								<div class="greeting-img">
+									<img src="https://answerny.ai/img/G6_gyeongbuk.png">
+								</div>
+								<div class="greeting-contents">경상북도</div>
+							</a>
+							<a href="" class="btn_box">
+								<div class="greeting-img">
+									<img src="https://answerny.ai/img/G6_gyeongnam.png">
+								</div>
+								<div class="greeting-contents">경상남도</div>
+							</a>
+							<a href="" class="btn_box">
+								<div class="greeting-img">
+									<img src="https://answerny.ai/img/G6_jeju.png">
+								</div>
+								<div class="greeting-contents">제주도</div>
+							</a>
+						</div>
+					</div>
+				</div>
+				<p class="answer__time">오후 10:50</p>
+				
 			</div>
 		</div>
-		<!-- <ul class="answer_box">
-			<li class="name">
-				
-			</li>
-			<li class="subname">코로나19 챗봇<sup style="color:#F37058;font-size:10px">BETA</sup>
-			</li>
-			<li class="answer">
-				
-			</li>
-			<li class="time">오후 10:50</li>
-		</ul> -->
 	</div>
 	<!-- </div> -->
 
@@ -314,7 +320,7 @@
 					onkeypress="if(event.keyCode==13) {doQuestion(); return false;}">
 				<input type="text" hidden="hidden" id="hidden_query">
 				<button type="submit" class="btn_send_thema" onclick="javascript:doQuestion();">
-					SEND
+					보내기
 				</button>
 			</div>
 		</form>
