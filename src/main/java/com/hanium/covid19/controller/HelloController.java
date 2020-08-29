@@ -1,9 +1,13 @@
 package com.hanium.covid19.controller;
 
+import com.hanium.covid19.adapter.Covid19TrendOfKorea;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.io.IOException;
 
 @Controller
 public class HelloController {
@@ -19,4 +23,22 @@ public class HelloController {
 		model.addAttribute("message", "Hello World!");
 		return "hello";
 	}
+
+	// 국내 전체 발생동향
+	@RequestMapping("/info/trend/korea/")
+	@ResponseBody
+	public String getTrendOfKorea() throws IOException {
+		Covid19TrendOfKorea covid = new Covid19TrendOfKorea();
+		String result = covid.getTrend();
+
+		return result;
+	}
+
+	// 시도별 발생동향
+	@RequestMapping("/info/trend/cites/")
+	public String getTrendOfCities(Model model) {
+		model.addAttribute("message", "Hello World!");
+		return "hello";
+	}
+
 }
