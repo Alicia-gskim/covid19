@@ -79,6 +79,18 @@ header .info{font-size:1.6667vw;padding:1.3333vw 0;background:#fff;}
 .clinic button{width:100%;height:6.9444vw;line-height:6.9444vw;text-align:center;font-size:2.7778vw;border:1px solid #222;border-radius:1.3889vw;}
 
 
+.info__title{font-size:4.8611vw;font-weight:bold;}
+.info__text{font-size:2.2222vw;padding-bottom:2.7778vw;color:#b2b2b2;}
+.info__contant{width:90%;padding:1.3889vw;margin:1.3889vw 0;border:1px solid #222;box-sizing: border-box;}
+.info__subtitle{font-size:3.0556vw;font-weight:bold;padding-bottom:2.0833vw;}
+.info p{font-size:1.9444vw;}
+.info ul{padding:2.0833vw 0;}
+.info ul li{position:relative;padding-left:2.0833vw;margin-top:1.3889vw;font-size:1.9444vw;font-weight:300;}
+.info ul li::after{content:'';display:block;position:absolute;top:2vw;left:0;width:0.6944vw;height:0.6944vw;background:#b2b2b2;}
+.denger{margin-bottom:2.7778vw;font-size:1.6667vw;color:#fb842d;}
+.info .link{margin:2.0833vw 0;}
+.answer__ask.info{padding-bottom:5.5556vw;position:relative;}
+
 @keyframes bouncedelay {
   0% {
     bottom: 0;
