@@ -1,5 +1,7 @@
 package com.hanium.covid19.adapter;
 
+import jdk.nashorn.internal.parser.JSONParser;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -30,6 +32,9 @@ public class Covid19TrendOfKorea extends Covid19Trend{
 
     inputStream.close();
     serviceConnection.disconnect();
+
+    Covid19TrendOfKoreaDTO covidDTO = new Covid19TrendOfKoreaDTO();
+    covidDTO.setResultCode(null);
 
     return response.toString();
   }
