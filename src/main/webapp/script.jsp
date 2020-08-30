@@ -8,4 +8,5 @@
 <script type="text/javascript" src="js/autoCompleteCommon.js"></script>
 <script type="text/javascript" src="js/jquery.cookie.js"></script>
 
-<script type="text/javascript" src="js/common.js"></script>
+<!-- <script type="text/javascript" src="js/common.js"></script> -->
+<script type="text/javascript" src="js/custom.js"></script>
