@@ -224,9 +224,9 @@ header .info{font-size:1.6667vw;text-indent:4.8611vw;height:4.8611vw;line-height
   .answer__ask dt a{font-size:20px;padding-bottom:2px;border-bottom:1px solid #03A9F4;}
   .answer__ask dd{margin-top:10px;font-size:18px;}
 
-  .clinic .answer__info{margin-bottom:40px;}
+  .clinic .answer__info{margin-bottom:20px;}
   .clinic a{font-size:20px;padding-bottom:0.4167;border-bottom:1px solid #03A9F4;}
-  .clinic button{width:100%;height:100px;line-height:100px;font-size:40px;border:1px solid #222;border-radius:20px;}
+  .clinic button{width:200px;height:50px;line-height:50px;margin:0 auto;font-size:20px;border:1px solid #222;border-radius:10px;}
 
 
   .info__title{font-size:35px;line-height:1.5em;}
