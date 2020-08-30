@@ -1,7 +1,5 @@
 package com.hanium.covid19.adapter;
 
-import jdk.nashorn.internal.parser.JSONParser;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

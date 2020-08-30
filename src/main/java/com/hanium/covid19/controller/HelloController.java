@@ -25,11 +25,6 @@ public class HelloController {
 		return "hello";
 	}
 	
-	@RequestMapping("/mainAnswer")
-	public String mainAnswer() {
-		return "answer/mainAnswer";
-	}
-
 	// 국내 전체 발생동향
 	@RequestMapping("/info/trend/korea")
 	@ResponseBody

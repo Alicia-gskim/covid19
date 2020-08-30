@@ -16,7 +16,7 @@ var QUESTION_TOP_HTML = ["<div class='box_wrap'>", "<ul class='question_box'>", 
 var QUESTION_BOTTOM_HTML = ["</li>", "<li class='time'></li>", "</ul>", "</div>"].join('');
 var ANSWER_TOP_HTML = ["<div class='box_wrap'>", "<ul class='answer_box'>", "<li class='name'><img src='" + IMGSRV_URL + "/gui1.png' alt='' onclick='javascript:oneWayQuery(1)'/></li>","<li class='subname'>코로나19 챗봇<sup style=\"color:#F37058;font-size:10px\">BETA</sup> </li>","<li class='answer'>"].join('');
 var ANSWER_BOTTOM_HTML = ["</li>", "<li class='time'></li>", "</ul>", "</div>"].join('');
-var LOADING_HTML = ["<div class='box_wrap' id='loading'>", "<ul class='answer_box'>", "<li class='name'><img src='" + IMGSRV_URL + "/gui1.png' alt=''/></li>", "<li class='answer'>", "<div class='three-balls'>", "<div class='ball ball1'></div>", "<div class='ball ball2'></div>", "<div class='ball ball3'></div>", "</div>", "</li>", "</ul>", "</div>"].join('');
+var LOADING_HTML = ["<ul id='loading' class='answer_box'>", "<li class='name'><img src='" + IMGSRV_URL + "/gui1.png' alt=''/></li>", "<li class='answer'>", "<div class='three-balls'>", "<div class='ball ball1'></div>", "<div class='ball ball2'></div>", "<div class='ball ball3'></div>", "</div>", "</li>", "</ul>"].join('');
 var REFRESH_MESSAGE = '{  "message": "오랫동안 대화가 없어 챗봇이 쉬고 있어요😴<br>챗봇과 대화를 다시 시작하시려면 새로고침 후 사용해주세요🙂",  "buttons": {  "type": "refresh",  "button": [  {  "buttonname": "새로고침"  }  ]  }}';
 
 // 사용자 대기 이벤트
@@ -85,21 +85,64 @@ $(function() {
 	}
 });
 
-function answerClick(url) {
-//	$('.box_wrap').append("<jsp:include page='mainAnswer.jsp' >");
+function answerClick(url, arg) {
+	var txt = "";
+	switch(arg) {
+		case "region":				txt = "지역별 확진자현황";			break;
+		case "government":			txt = "보도자료 정부브리핑";			break;
+		case "issue":				txt = "코코로나19 팩트 & 이슈체크";	break;
+		case "target":				txt = "대상별 맞춤정보";				break;
+		case "clinic":				txt = "선별진료소 정보확인";			break;
+		case "foreignChk":			txt = "국외현황 정보확인";			break;
+		case "personalized":		txt = "일반인 맞춤정보";				break;
+		case "quarantine":			txt = "자가격리자 맞춤정보";			break;
+		case "overseasVisitors":	txt = "해외방문자 맞춤정보";			break;
+		case "medical":				txt = "의료인 맞춤정보";				break;
+		case "groupFacility":		txt = "집단시설 맞춤정보";			break;
+		case "suspected":			txt = "의심증상 확인하기";			break;
+		
+		case "seoul":				txt = "서울특별시";				break;
+		case "busan":				txt = "부산광역시";				break;
+		case "daegu":				txt = "대구광역시";				break;
+		case "incheon":				txt = "인천광역시";				break;
+		case "gwangju":				txt = "광주광역시";				break;
+		case "daejeon":				txt = "대전광역시";				break;
+		case "ulsan":				txt = "울산광역시";				break;
+		case "sejong":				txt = "세종시";					break;
+		case "gangwondo":			txt = "강원도";					break;
+		case "north-chungcheong":	txt = "충청북도";					break;
+		case "south-chungcheong":	txt = "충청남도";					break;
+		case "north-jeolla":		txt = "전라북도";					break;
+		case "south-jeolla":		txt = "전라남도";					break;
+		case "north-gyeongsang":	txt = "경상북도";					break;
+		case "south-gyeongsang":	txt = "경상남도";					break;
+		case "jeju":				txt = "제주도";					break;
+		
+		default : txt = "코로나 알림이";								break;
+	}
 	
-	html = '<div class="questioner"><p class="questioner__text">코로나 알림이</p><p class="questioner__time">'
+	console.log("지역선택 : ", txt);
+	html = '<div class="questioner"><p class="questioner__text">';
+	html += txt + '</p><p class="questioner__time">'
 	html += getHour() + '</p>';
 	
 	$('.box_wrap').append(html);
 	
 	$.ajax({
 		url: url,
+		beforeSend: function beforeSend() {
+			//질문 박스
+			$(".box_wrap").append(LOADING_HTML);
+		},
 		success: function(res) {
 			$('.box_wrap').append(res);
 		},
 		error: function(e) {
 			console.log("e : ", e);
+		},
+		complete: function() {
+			$(".answer__time:last").text(getHour());
+			$('#loading').remove();
 		}
 	})
 }

@@ -14,8 +14,11 @@
 	<header>
 		<div class="header">
 			<h1>코로나 알림이</h1>
-			<div class="header__guide"><button type="button"><img src="images/guide_btn.png"
-						onclick="javascript:guideOpen();"></button></div>
+			<div class="header__guide">
+				<button type="button">
+					<img src="images/guide_btn.png" onclick="javascript:guideOpen();">
+				</button>
+			</div>
 		</div>
 		<div class="covid">
 			<div class="total">
@@ -60,31 +63,31 @@
 					필요한 정보는 버튼을 선택하거나 질문을 직접 입력하여 확인하실 수 있습니다.
 					<div class="btn_wrap">
 						<div class="btn_cover">
-							<button class="btn_box">
+							<button onclick="answerClick('/caseByRegion')" class="btn_box">
 								<div class="greeting-img">
 									<img src="images/Greeting_btn11.png">
 								</div>
 								<div class="greeting-contents">지역별<br>확진자현황</div>
 							</button>
-							<button class="btn_box">
+							<button onclick="answerClick('/governmentBriefing')" class="btn_box">
 								<div class="greeting-img">
 									<img src="images/Greeting_btn9.png">
 								</div>
 								<div class="greeting-contents">보도자료<br>정부브리핑</div>
 							</button>
-							<button class="btn_box">
+							<button onclick="answerClick('/covid19Issue')" class="btn_box">
 								<div class="greeting-img">
 									<img src="images/Greeting_btn_factcheck.png">
 								</div>
 								<div class="greeting-contents">코코로나19 팩트<br>& 이슈체크</div>
 							</button>
-							<button class="btn_box">
+							<button onclick="answerClick('/customizedByTarget')" class="btn_box">
 								<div class="greeting-img">
 									<img src="images/Greeting_btn10.png">
 								</div>
 								<div class="greeting-contents">대상별<br>맞춤정보</div>
 							</button>
-							<button class="btn_box">
+							<button onclick="anserClick('/screeningClinic')" class="btn_box">
 								<div class="greeting-img">
 									<img src="images/Greeting_btn2.png">
 								</div>
@@ -274,7 +277,7 @@
 			<p class="questioner__time">오후 10:50</p>
 		</div>
 
-		<!-- 지역현황 답변 -->
+		<!-- 보도자료 정부 브리핑 답변 -->
 		<div class="answer">
 			<p class="answer__img"><img src="images/gui1.png" alt="""></p>
 			<div class=" answer__content">
@@ -317,7 +320,7 @@
 					<p class="answer__info">* <a href="https://www.mohw.go.kr/react/popup_200128.html" target="_blank">지역별 선별 진료소 목록</a> 및 <a href="https://www.mohw.go.kr/react/popup_200128_2.html" target="_blank">검체 채취 가능 진료소 목록</a>을 확인해보세요!</p>
 					<p class="answer__info">*암, 심장질환 등 호흡기질환이 아닌 환자들께서는 코로나19에 대해서 안심하고 <a href="https://www.mohw.go.kr/react/popup_200128_3.html" target="_blank">국민안심병원</a>에서 진료받으실 수 있습니다.</p>
 
-					<button class="answer__request">의심증상 확인하기</button>
+					<button onclick="answerClick('/suspectedSymptoms', 'suspected')" class="answer__request">의심증상 확인하기</button>
 				</div>
 				<p class="answer__time">오후 10:50</p>
 			</div>
