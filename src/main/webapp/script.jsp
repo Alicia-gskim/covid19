@@ -4,7 +4,7 @@
 <script type="text/javascript" src="js/jquery-latest.min.js"></script>
 <script type="text/javascript" src="js/async.min.js"></script>
 <script type="text/javascript" src="js/swiper.min.js"></script>
-<script type="text/javascript" src="js/corona.js"></script>
+<!-- <script type="text/javascript" src="js/corona.js"></script> -->
 <script type="text/javascript" src="js/autoCompleteCommon.js"></script>
 <script type="text/javascript" src="js/jquery.cookie.js"></script>
 

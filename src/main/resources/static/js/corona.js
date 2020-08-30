@@ -43,7 +43,7 @@ $(function () {
 			cache: false,
 			dataType: 'json',
 			processData: false,
-			contentType: "application/json; charset=utf-8",
+			contentType: "application/json",
 			beforeSend: function beforeSend() {
 				//질문 박스
 				$(".search_boxs").append(LOADING_HTML);
@@ -126,7 +126,7 @@ $(function () {
 				cache: false,
 				dataType: 'json',
 				processData: false,
-				contentType: "application/json; charset=utf-8",
+				contentType: "application/json",
 				success: function success(jsonData) {
 					if (JSON.stringify(jsonData) == "{}") {
 						callback('SessionKeyIsNone');
@@ -150,7 +150,7 @@ $(function () {
 				type: 'GET',
 				url: API_URL + "/categoryList?projectId=" + projectId,
 				dataType: 'json',
-				contentType: "application/json; charset=utf-8",
+				contentType: "application/json",
 				success: function success(jsonData) {
 					if (jsonData.status != "ok") {
 						callback('CategoryDataIsNone');
@@ -265,7 +265,7 @@ $(function () {
 						//data: param,
 						dataType: 'json',
 						processData: false,
-						contentType: "application/json; charset=utf-8",
+						contentType: "application/json",
 						beforeSend: function beforeSend() {
 							//질문 박스
 							var tempStr = "";
