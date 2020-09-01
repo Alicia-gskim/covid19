@@ -3,275 +3,46 @@ package com.hanium.covid19.DTO;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
+/**
+ * 시도별 동향(http://api.corona-19.kr/korea/contry/new/) 호출 결과 매핑 DTO
+ * 프론트에서 이 객채를 리턴 받음
+ */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Covid19TrendOfCitiesDTO {
-  private Quarantine quarantine;
-  private Jeju jeju;
-  private Gyeongnam gyeongnam;
-  private Gyeongbuk gyeongbuk;
-  private Jeonnam jeonnam;
-  private Jeonbuk jeonbuk;
-  private Chungnam chungnam;
-  private Chungbuk chungbuk;
-  private Gangwon gangwon;
-  private Gyeonggi gyeonggi;
-  private Sejong sejong;
-  private Ulsan ulsan;
-  private Daejeon daejeon;
-  private Gwangju gwangju;
-  private Incheon incheon;
-  private Daegu daegu;
-  private Busan busan;
-  private Seoul seoul;
-  private Korea korea;
-  private String resultMessage;
-  private String resultCode;
+  private Items quarantine; // 검역
+  private Items jeju; // 제주
+  private Items gyeongnam; // 경남
+  private Items gyeongbuk; // 경북
+  private Items jeonnam; // 전남
+  private Items jeonbuk; // 전북
+  private Items chungnam; // 충남
+  private Items chungbuk; // 충북
+  private Items gangwon; // 강원
+  private Items gyeonggi; //경
+  private Items sejong; // 세종
+  private Items ulsan; // 울산
+  private Items daejeon; // 대전
+  private Items gwangju; // 광주
+  private Items incheon; // 인천
+  private Items daegu; // 대구
+  private Items busan; // 부산
+  private Items seoul; // 서울
+  private Items korea; // 한국
+  private String resultMessage; // 정상처리: (정상 처리되었습니다.) / 오류(권한이 없거나 잘못된 키 입니다. "github.com/dhlife09/Corona-19-API"에 방문하세요.)
+  private String resultCode; // 응답코드, 정상 0, 비정상 401
 
   @Data
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static class Quarantine {
-    private String newCcase;
-    private String newFcase;
-    private String percentage;
-    private String death;
-    private String recovered;
-    private String totalCase;
-    private String newCase;
-    private String countryName;
+  public class Items {
+    private String newCcase; // 전일 대비 증감 - 지역 발생
+    private String newFcase; // 전일 대비 증감 - 해외 유입
+    private String percentage; // 발생률
+    private String death; // 사망자
+    private String recovered; // 완치자 수
+    private String totalCase; // 확진자 수
+    private String newCase; // 신규확진자 수
+    private String countryName; // 시도명(지역명)
   }
 
-  @Data
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  public static class Jeju {
-    private String newCcase;
-    private String newFcase;
-    private String percentage;
-    private String death;
-    private String recovered;
-    private String totalCase;
-    private String newCase;
-    private String countryName;
-  }
-
-  @Data
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  public static class Gyeongnam {
-    private String newCcase;
-    private String newFcase;
-    private String percentage;
-    private String death;
-    private String recovered;
-    private String totalCase;
-    private String newCase;
-    private String countryName;
-  }
-
-  @Data
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  public static class Gyeongbuk {
-    private String newCcase;
-    private String newFcase;
-    private String percentage;
-    private String death;
-    private String recovered;
-    private String totalCase;
-    private String newCase;
-    private String countryName;
-  }
-
-  @Data
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  public static class Jeonnam {
-    private String newCcase;
-    private String newFcase;
-    private String percentage;
-    private String death;
-    private String recovered;
-    private String totalCase;
-    private String newCase;
-    private String countryName;
-  }
-
-  @Data
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  public static class Jeonbuk {
-    private String newCcase;
-    private String newFcase;
-    private String percentage;
-    private String death;
-    private String recovered;
-    private String totalCase;
-    private String newCase;
-    private String countryName;
-  }
-
-  @Data
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  public static class Chungnam {
-    private String newCcase;
-    private String newFcase;
-    private String percentage;
-    private String death;
-    private String recovered;
-    private String totalCase;
-    private String newCase;
-    private String countryName;
-  }
-
-  @Data
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  public static class Chungbuk {
-    private String newCcase;
-    private String newFcase;
-    private String percentage;
-    private String death;
-    private String recovered;
-    private String totalCase;
-    private String newCase;
-    private String countryName;
-  }
-
-  @Data
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  public static class Gangwon {
-    private String newCcase;
-    private String newFcase;
-    private String percentage;
-    private String death;
-    private String recovered;
-    private String totalCase;
-    private String newCase;
-    private String countryName;
-  }
-
-  @Data
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  public static class Gyeonggi {
-    private String newCcase;
-    private String newFcase;
-    private String percentage;
-    private String death;
-    private String recovered;
-    private String totalCase;
-    private String newCase;
-    private String countryName;
-  }
-
-  @Data
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  public static class Sejong {
-    private String newCcase;
-    private String newFcase;
-    private String percentage;
-    private String death;
-    private String recovered;
-    private String totalCase;
-    private String newCase;
-    private String countryName;
-  }
-
-  @Data
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  public static class Ulsan {
-    private String newCcase;
-    private String newFcase;
-    private String percentage;
-    private String death;
-    private String recovered;
-    private String totalCase;
-    private String newCase;
-    private String countryName;
-  }
-
-  @Data
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  public static class Daejeon {
-    private String newCcase;
-    private String newFcase;
-    private String percentage;
-    private String death;
-    private String recovered;
-    private String totalCase;
-    private String newCase;
-    private String countryName;
-  }
-
-  @Data
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  public static class Gwangju {
-    private String newCcase;
-    private String newFcase;
-    private String percentage;
-    private String death;
-    private String recovered;
-    private String totalCase;
-    private String newCase;
-    private String countryName;
-  }
-
-  @Data
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  public static class Incheon {
-    private String newCcase;
-    private String newFcase;
-    private String percentage;
-    private String death;
-    private String recovered;
-    private String totalCase;
-    private String newCase;
-    private String countryName;
-  }
-
-  @Data
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  public static class Daegu {
-    private String newCcase;
-    private String newFcase;
-    private String percentage;
-    private String death;
-    private String recovered;
-    private String totalCase;
-    private String newCase;
-    private String countryName;
-  }
-
-  @Data
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  public static class Busan {
-    private String newCcase;
-    private String newFcase;
-    private String percentage;
-    private String death;
-    private String recovered;
-    private String totalCase;
-    private String newCase;
-    private String countryName;
-  }
-
-  @Data
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  public static class Seoul {
-    private String newCcase;
-    private String newFcase;
-    private String percentage;
-    private String death;
-    private String recovered;
-    private String totalCase;
-    private String newCase;
-    private String countryName;
-  }
-
-  @Data
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  public static class Korea {
-    private String newCcase;
-    private String newFcase;
-    private String percentage;
-    private String death;
-    private String recovered;
-    private String totalCase;
-    private String newCase;
-    private String countryName;
-  }
 }
