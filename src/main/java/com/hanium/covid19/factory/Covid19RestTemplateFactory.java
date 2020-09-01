@@ -1,16 +1,24 @@
 package com.hanium.covid19.factory;
 
-import com.hanium.covid19.DTO.Covid19TrendOfKoreaDTO;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
-
+/**
+ * Rest Template 싱글톤 구현
+ * Rest 호출을 위한 팩토리로
+ * 인스턴스 하나만 생성하여
+ */
 public class Covid19RestTemplateFactory {
   private volatile static RestTemplate restTemplate = null;
 
-  public static RestTemplate getRestTemplateInstance() {
+/**
+ * Rest Template 싱글톤
+ *
+ * @return Rest Template 인스턴스
+ */
+public static RestTemplate getRestTemplateInstance() {
     if(null == restTemplate) {
       synchronized(RestTemplate.class) {
         if(null == restTemplate) {
