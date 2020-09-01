@@ -40,6 +40,8 @@
 					</button>
 				</div>
 			</div>
+			<!-- Add Pagination -->
+			<div class="swiper-pagination"></div>
 		</div>
 		<p class="answer__time">오후 10:50</p>
 	</div>

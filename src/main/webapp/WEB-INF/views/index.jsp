@@ -101,11 +101,19 @@
 							</button>
 						</div>
 					</div>
-					<div>정보 출처 :
+					<div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets" style="width:600px;">
+						<span class="swiper-pagination-bullet swiper-pagination-bullet-active"
+								tabindex="0" role="button" aria-label="Go to slide 1">
+						</span>
+					</div>
+					<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+					<br>
+					<div style="font-size:11px;">정보 출처 :
 						<a href="http://www.cdc.go.kr/cdc/" target="_blank" class="btn2 type_b"
 							style="text-decoration:underline;color:#0040ff;">질병관리본부,</a>
 						<a href="http://ncov.mohw.go.kr/index_main.jsp" target="_blank"class="btn2 type_b"
-							style="text-decoration:underline;color:#0040ff;">코로나바이러스감염증-19(COVID-19)</a></div>
+							style="text-decoration:underline;color:#0040ff;">코로나바이러스감염증-19(COVID-19)</a>
+					</div>
 				</div>
 				<p class="answer__time">오후 10:50</p>
 			</div>
@@ -115,16 +123,16 @@
 
 	<!-- </div> -->
 	<div class="search">
-		<form id="question_frm" name="question_frm" method="POST" action="javascript:doQuestion()">
+<!-- 		<form id="question_frm" name="question_frm" method="POST" action="doQuestion()"> -->
 			<div class="search__wrap">
 				<input type="text" class="quesion_input" name="sentence" id="sentence"
 					onkeypress="if(event.keyCode==13) {doQuestion(); return false;}">
 				<input type="text" hidden="hidden" id="hidden_query">
-				<button type="submit" class="btn_send_thema" onclick="javascript:doQuestion();">
+				<button type="submit" class="btn_send_thema" onclick="doQuestion()">
 					보내기
 				</button>
 			</div>
-		</form>
+<!-- 		</form> -->
 	</div>
 	</div>
 	</div>

@@ -131,11 +131,16 @@ function answerClick(url, arg) {
 	$.ajax({
 		url: url,
 		beforeSend: function beforeSend() {
-			//질문 박스
+			// 로딩 태그 보여주기
 			$(".box_wrap").append(LOADING_HTML);
 		},
 		success: function(res) {
+			$('html, body').animate({scrollTop: $('.answer:last').offset().top}, 10);
 			$('.box_wrap').append(res);
+			
+			if( res.match('.info') != null ) {
+				new Swiper('.info');
+			}
 		},
 		error: function(e) {
 			console.log("e : ", e);
@@ -144,7 +149,7 @@ function answerClick(url, arg) {
 			$(".answer__time:last").text(getHour());
 			$('#loading').remove();
 		}
-	})
+	});
 }
 function getHour() {
 	return convert12H(checkTime(new Date().getHours()) + ':' + checkTime(new Date().getMinutes()));
@@ -182,174 +187,106 @@ function checkTime(i) {
 	return i;
 }
 
-function doQuestion(_query, hidden_query) {
-	if(!refreshBool)	return false;
-	var query = _query ? _query : $('#sentence').val();
-
-	var blank_query = query;
-	blank_query = blank_query.replace(/^\s+|\s+$/g, "");
+// 메세지 전송 함수
+function doQuestion() {
+//	if(!refreshBool)	return false;
+//	var query = _query ? _query : $('#sentence').val();
+//
+//	var blank_query = query;
+//	blank_query = blank_query.replace(/^\s+|\s+$/g, "");
+//	
+//	if (blank_query != "") {
+//		if (hidden_query) document.getElementById("hidden_query").value = hidden_query;
+//		
+//		if (eventBool) {
+//			eventBool = false;
+//			$("#sentence").on("keydown", function () {
+//				clearInterval(timer);
+//				timer = window.setTimeout(oneWayQuery, userWaitTime);
+//			});
+//		}
+//		if (refreshBool) {
+//			// refreshBool = false;
+//			$("#sentence").on("keydown", function () {
+//				clearInterval(timer_R);
+//				timer_R = window.setTimeout(refreshQuery,userRefreshTime);
+//			});
+//		}
+//		var ajaxSend = true;
+//		var jsonData = undefined;
+//
+//		// input hidden_query text into hidden input tag
+//		var hidden_query = $('#hidden_query').val().length > 0 ? $('#hidden_query').val() : query;
+//		hidden_query = hidden_query.replace(/<(\/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(\/)?>/gi," ");	// html태그 없애기
+//		
+//		if (query.length > 0) {
+//			if (ajaxSend) {
+//				var param = "?query=" + encodeURIComponent(query) + "&sessionKey=" + sessionKey + "&projectId=" + projectId;
+//				$.ajax({
+//					type: "GET",
+//					url: API_URL + "/iChatResponse" + param,
+//					cache: false,
+//					dataType: 'json',
+//					processData: false,
+//					contentType: "application/json",
+//					beforeSend: function beforeSend() {
+//						//질문 박스
+//						var tempStr = "";
+//						tempStr += QUESTION_TOP_HTML;
+//						tempStr += decodeURIComponent(hidden_query);
+//						tempStr += QUESTION_BOTTOM_HTML;
+//						tempStr += LOADING_HTML;
+//
+//						$(".search_boxs").append(tempStr);
+//						$(".time:last").text(getHour());
+//						$('#search_boxs').scrollTop(500);
+//						$("#sentence").val("");
+//						$('#hidden_query').val("");
+//					},
+//					success: ajaxAnswerSuccess,
+//					error: ajaxAnswerError
+//				});
+//			}
+//		}
+//	}
 	
-	if (blank_query != "") {
-		if (hidden_query) document.getElementById("hidden_query").value = hidden_query;
-		
-		if (eventBool) {
-			eventBool = false;
-			$("#sentence").on("keydown", function () {
-				clearInterval(timer);
-				timer = window.setTimeout(oneWayQuery, userWaitTime);
-			});
-		}
-		if (refreshBool) {
-			// refreshBool = false;
-			$("#sentence").on("keydown", function () {
-				clearInterval(timer_R);
-				timer_R = window.setTimeout(refreshQuery,userRefreshTime);
-			});
-		}
-		var ajaxSend = true;
-		var jsonData = undefined;
-
-		// input hidden_query text into hidden input tag
-		var hidden_query = $('#hidden_query').val().length > 0 ? $('#hidden_query').val() : query;
-		hidden_query = hidden_query.replace(/<(\/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(\/)?>/gi," ");	// html태그 없애기
-		
-		if (query.length > 0) {
-			if (ajaxSend) {
-				var param = "?query=" + encodeURIComponent(query) + "&sessionKey=" + sessionKey + "&projectId=" + projectId;
-				$.ajax({
-					type: "GET",
-					url: API_URL + "/iChatResponse" + param,
-					cache: false,
-					dataType: 'json',
-					processData: false,
-					contentType: "application/json",
-					beforeSend: function beforeSend() {
-						//질문 박스
-						var tempStr = "";
-						tempStr += QUESTION_TOP_HTML;
-						tempStr += decodeURIComponent(hidden_query);
-						tempStr += QUESTION_BOTTOM_HTML;
-						tempStr += LOADING_HTML;
-
-						$(".search_boxs").append(tempStr);
-						$(".time:last").text(getHour());
-						$('#search_boxs').scrollTop(500);
-						$("#sentence").val("");
-						$('#hidden_query').val("");
-					},
-					success: ajaxAnswerSuccess,
-					error: ajaxAnswerError
-				});
-			}
-		}
-	}
-}
-
-function ajaxAnswerSuccess(jsonData) {
-	if (JSON.stringify(jsonData) == "{}") {
-		callback('iChatResponseIsNone');
-	} else {
-		//답변박스
-		var data = jsonData.answer;
+	console.log($('#sentence').val());
+	
+	var param = {
+			"query": $('#sentence').val(),
+			"page": 'main'
+	};
+	$.ajax({
+		type: 'POST',
+		url: 'tmp/request',
+		contentType: 'application/json',
+		dataType: 'json',
+		data: JSON.stringify(param),
+		beforeSend: function beforeSend() {
+//			html = '<div class="questioner"><p class="questioner__text">';
+//			html += $('#sentence').val() + '</p><p class="questioner__time">'
+//			html += getHour() + '</p>';
+//			
+//			$('.box_wrap').append(html);
 			
-		if(data.indexOf('"hidden_query"') !=-1){
-		} else {
-			$("#sentence").attr("readonly",false);
-		}
-		
-		if (data != undefined) {
-			try {
-				var jAnswer = JSON.parse(data);
-				
-//				doAnswer(wrapTemplate(jAnswer), jAnswer);
-			} catch (e) {
-				 console.log(e);
-				 doAnswer(data);
+			//질문 박스
+			$(".box_wrap").append(LOADING_HTML);
+		},
+		success: function(res) {
+			$('html, body').animate({scrollTop: $('.answer:last').offset().top}, 10);
+//			$('.box_wrap').append(res);
+			alert("<<응답받은 결과값>> 1. query : " + res.query + ", 2. url : " + res.url + ", 3. page name : " + res.pgname);
+			
+			if( res.isBool ) {
+				answerClick(res.url, res.pgname);
 			}
-		} else {
-			doAnswer(ERROR_MESSAGE);
-			console.log("ajaxAnswerError error : data is undefined");
+		},
+		error: function(e) {
+			console.log("e : ", e);
+		},
+		complete: function() {
+			$(".answer__time:last").text(getHour());
+			$('#loading').remove();
 		}
-	}
-}
-function ajaxAnswerError(request, status, error) {
-	doAnswer(ERROR_MESSAGE);
-	callback(null);
-}
-
-function doAnswer(a, b) {
-	/* a를 객체로 만들고
-	 * a에 메세지에 스트링 값을 넣고
-	 * 바텀 스와이퍼는 따로 조건문 추가하여 붙일 수 있도록
-	 */
-	
-	$('#loading').remove();
-	if (a.bottomAnswer) {
-		if (a.resultAnswer === '') a.resultAnswer = DEFAULT_BOTTOM_ANSWER;
-		$(".demoview").append(a.bottomAnswer);
-	}
-	
-	var tempStr = ANSWER_TOP_HTML;
-	tempStr += a.resultAnswer ? a.resultAnswer : a;
-	tempStr += ANSWER_BOTTOM_HTML;
-
-	$(".search_boxs").append(tempStr);
-	var tmp = {};
-	if(b.cards != undefined){
-		tmp.cards = b.cards;
-		activateSwiper(tmp);
-	}
-	if(b.buttons.button != undefined) {
-		if(b.buttons.button.length == undefined) {
-			if(b.buttons.button.type === 'swipe' || b.buttons.button.type == 'swipe_bottom' || b.buttons.button.type == 'swipe_lines') {	
-				tmp.buttons.button = b.buttons.button;
-				activateSwiper(tmp);
-			}
-		} else {
-			for(var i=0;i<b.buttons.button.length;i++) {
-				if(b.buttons.button[i].type === 'swipe' || b.buttons.button[i].type == 'swipe_bottom' || b.buttons.button.type == 'swipe_lines') {
-					tmp.buttons.button = b.buttons.button[i];
-					activateSwiper(tmp);
-				}
-			}
-		}
-	}
-	
-	var wid;
-	var max = 0;
-	$('div[name="cardSize'+cardCount+'"]').each(function (i, v) {
-		wid = $(this).height();
-	    if(max < wid){
-	    	max = wid;
-	    }
-	});
-	$('div[name="cardSize'+cardCount+'"]').each(function (i, v) {
-		$(this).css('height', max);			
-	});
-	cardCount++;
-
-	$(".time:last").text(getHour());
-	var all = $(".search_boxs").prop('scrollHeight'); //전체 사이즈
-	var lastH = $(".answer_box:last").prop('offsetHeight'); // 마지막 말풍선 사이즈
-	var minus = 0;
-	if(lastH > 481) {
-		minus = all - lastH;
-		$(".search_boxs").scrollTop(minus - 150);
-	} else {
-		$(".search_boxs").scrollTop($('.search_boxs')[0].scrollHeight);
-	}
-	$('#sentence').keydown();
-
-	$('div[name=greeting'+buttonHeightCnt+']')
-	.mouseover(function (e) {
-		var img = $(this).find('img').attr("src");
-		img = img.replace(".png", "-1.png");
-		$(this).find('img').attr("src", img);
 	})
-	.mouseout(function (e) {
-		var img = $(this).find('img').attr("src");
-		img = img.replace("-1.png",".png");
-		$(this).find('img').attr("src", img);
-	});
-	buttonHeightCnt++;
 }

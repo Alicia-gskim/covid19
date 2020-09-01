@@ -46,7 +46,7 @@
 					</button>
 				</div>
 			</div>
-			<div>정보 출처 :
+			<div style="font-size:11px;">정보 출처 :
 				<a href="http://www.cdc.go.kr/cdc" target="_blank" class="btn2 type_b"
 					style="text-decoration:underline;color:#0040ff;">질병관리본부,</a>
 				<a href="http://ncov.mohw.go.kr/index_main.jsp" target="_blank" class="btn2 type_b"
