@@ -178,7 +178,7 @@ function getCitiesInfo(mappingView, city) {
 				function(callback) {
 					// Step #2. 조회한 도시의 데이터를 바인딩할 화면 표시
 					$.ajax({
-						url: mappingView,
+						url: '/region-city',
 						beforeSend: function beforeSend() {
 							// 로딩 태그 보여주기
 							$(".box_wrap").append(LOADING_HTML);
