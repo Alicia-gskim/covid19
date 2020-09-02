@@ -4,12 +4,14 @@ import com.hanium.covid19.DTO.Covid19TrendOfKoreaDTO;
 import com.hanium.covid19.factory.Covid19RestTemplateFactory;
 import com.hanium.covid19.adapter.Covid19Trend;
 import com.hanium.covid19.common.CommonKeys;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Service
 public class Covid19TrendOfKorea extends Covid19Trend {
 
   @Override
