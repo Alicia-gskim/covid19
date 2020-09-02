@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 /**
  * API 호출 컨트롤러
@@ -43,54 +42,9 @@ public class CovidInfoMappingController {
 
 	@PostMapping("/tmp/request")
 	public ResponseEntity<Map<String, Object>> getTrendOfCities(@RequestBody Map<String, Object> pMap) {
-		Map<String, Object> rMap = new HashMap<String, Object>();
 		String query = (String) pMap.get("query");
-//		String sessionId = UUID.randomUUID().toString();
-		String sessionId = "1234567890";
-		QueryResult queryResult = null;
-
-		// test
-		try {
-			queryResult =
-					DetectIntentTexts.detectIntentTexts("covid-19-chatbot-epfe", query, sessionId, "ko");
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
-
-
-		String pUrl = queryResult.getFulfillmentText();
-
 		Covid19TrendCities trend = new Covid19TrendCities();
-		Map<String, Object> result = trend.getTrend(); // API 호출 결과 리턴
-
-		rMap.put("isBool", true);
-		rMap.put("pgname", "seoul");
-		rMap.put("url", pUrl);
-		rMap.put("query", query);
-
-		//
-
-		boolean isBool = false;
-		String pgname = "", url = "";
-
-		/*
-		if("지역별".contains(query)) {
-			pgname = "region";
-			url = "/caseByRegion";
-			isBool = true;
-		}
-		else if("서울".contains(query)) {
-			pgname = "seoul";
-			url = "/region-seoul";
-			isBool = true;
-		}
-
-		rMap.put("isBool", isBool);
-		rMap.put("pgname", pgname);
-		rMap.put("url", url);
-		rMap.put("query", query);
-		*/
-
-		return ResponseEntity.ok(rMap);
+		Map<String, Object> result = trend.getTrend(query); // API 호출 결과 리턴
+		return ResponseEntity.ok(result);
 	}
 }
