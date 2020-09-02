@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- 지역별 확진자현황 -->
 <div class="answer">
-	<p onclick="getCitiesInfo('/mainAnswer', 'main')" class="answer__img"><img src="images/gui1.png" alt="""></p>
+	<p onclick="getCitiesInfo('/mainAnswer', 'main')" class="answer__img"><img src="images/gui1.png" alt=""></p>
 	<div class=" answer__content">
 		<p class="answer__name">코로나알림이</p>
 		<div class="answer__ask">
@@ -13,7 +13,8 @@
 
 			<div class="btn_wrap local">
 				<div class="btn_cover">
-					<button type="button" onclick="window.open('http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=13&ncvContSeq=&contSeq=&board_id=&gubun=')" class="btn_box">
+<!-- 					<button type="button" onclick="window.open('http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=13&ncvContSeq=&contSeq=&board_id=&gubun=')" class="btn_box"> -->
+					<button type="button" onclick="getCitiesInfo('/region-city', 'korea')" class="btn_box">
 						<div class="greeting-img">
 							<img src="https://answerny.ai/img/G6_allregion.png">
 						</div>
