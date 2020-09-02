@@ -19,6 +19,8 @@ var ANSWER_BOTTOM_HTML = ["</li>", "<li class='time'></li>", "</ul>", "</div>"].
 var LOADING_HTML = ["<ul id='loading' class='answer_box'>", "<li class='name'><img src='" + IMGSRV_URL + "/gui1.png' alt=''/></li>", "<li class='answer'>", "<div class='three-balls'>", "<div class='ball ball1'></div>", "<div class='ball ball2'></div>", "<div class='ball ball3'></div>", "</div>", "</li>", "</ul>"].join('');
 var REFRESH_MESSAGE = '{  "message": "오랫동안 대화가 없어 챗봇이 쉬고 있어요😴<br>챗봇과 대화를 다시 시작하시려면 새로고침 후 사용해주세요🙂",  "buttons": {  "type": "refresh",  "button": [  {  "buttonname": "새로고침"  }  ]  }}';
 
+var GET_HEADER_URL = "/info/trend/korea";
+
 // 사용자 대기 이벤트
 var userWaitTime = 60 * 1000;
 var userRefreshTime = 3600 * 1000;
@@ -32,6 +34,8 @@ var buttonHeightCnt = 0;
 $(function() {
 	$(document).ready(function() {
 		
+		
+		
 //		postCallAjax(API_URL + "/sessionRequest")
 		async.waterfall(
 				[
@@ -39,10 +43,58 @@ $(function() {
 					function (callback) {
 						getSeesionKey(callback);
 					},
-					// Step #2. 카테고리 데이터 가져오기
+					// Step #2. 헤더영역 데이터 가져오기
 					function (callback) {
-						greet = true;
-//						getCategoryData("0", callback);
+						$.ajax( {
+							type: 'POST',
+							url: GET_HEADER_URL,
+							cache: false,
+							dataType: 'json',
+							contentType: 'application/json',
+							success: function(res) {
+								if(res.message == 'success') {
+									callback('ServiceKeyIsNone');
+								} else {
+									console.log(res.json);
+									var jsonData = res.json;
+									// 1. 국내 확진자 전체 누석수
+									$('#notice_total').text(jsonData.TotalCase);
+									// 2. 어제 대비 오늘 추가 확진자 수
+									$('#notice_increase').text('(+' + (Number(jsonData.TodayRecovered) + Number(jsonData.TodayDeath) + Number(jsonData.TotalCaseBefore)) + ')');
+									// 3. 발생현황 카운트 기준일
+									$('#notice_time').text(jsonData.updateTime);
+									
+									// 4. 누적 치료중인 사람수
+									$('#NowCase span:first-child').text(jsonData.NowCase);
+									$('#NowCase span:last-child').text('('+ calculationPercentage(jsonData.NowCase, jsonData.TotalCase) +'%)');
+									$('#NCplus').text('+' + jsonData.TotalCaseBefore);
+									
+									// 5. 누적 자가격리 해제된 사람 수
+									$('#TotalRecovered span:first-child').text(jsonData.TotalRecovered);
+									$('#TotalRecovered span:last-child').text('('+ calculationPercentage(jsonData.TotalRecovered, jsonData.TotalCase) +'%)');
+									$('#TRplus').text('+' + jsonData.TodayRecovered);
+									
+									// 6. 누적 사망자 수
+									$('#TotalDeath span:first-child').text(jsonData.TotalDeath);
+									$('#TotalDeath span:last-child').text('('+ calculationPercentage(jsonData.TotalDeath, jsonData.TotalCase) +'%)');
+									$('#TDplus').text('+' + jsonData.TodayDeath);
+									
+									
+									// 7. 검사결과를 기다리는 사람수
+									$('#checkingCounter').text(jsonData.checkingCounter);
+									
+									// 정상 : 후처리 동작 없음
+									callback(null);
+								}
+							},
+							error: function(e) {
+								callback(e);
+							}
+						})
+					},
+					// Setp #3. 초기 메인 답변
+					function (callback) {
+						answerClick('/mainAnswer', 'main')
 					}
 				],
 				function (err) {
@@ -85,6 +137,33 @@ $(function() {
 	}
 });
 
+//function getCitiesInfo(city) {
+//	
+//	
+//	$.ajax({
+//		url: url,
+//		beforeSend: function beforeSend() {
+//			// 로딩 태그 보여주기
+//			$(".box_wrap").append(LOADING_HTML);
+//		},
+//		success: function(res) {
+//			$('html, body').animate({scrollTop: $('.answer:last').offset().top}, 10);
+//			$('.box_wrap').append(res);
+//			
+//			if( res.match('.info') != null ) {
+//				new Swiper('.info');
+//			}
+//		},
+//		error: function(e) {
+//			console.log("e : ", e);
+//		},
+//		complete: function() {
+//			$(".answer__time:last").text(getHour());
+//			$('#loading').remove();
+//		}
+//	})
+//}
+
 function answerClick(url, arg) {
 	var txt = "";
 	switch(arg) {
@@ -121,12 +200,14 @@ function answerClick(url, arg) {
 		default : txt = "코로나 알림이";								break;
 	}
 	
-	console.log("지역선택 : ", txt);
-	html = '<div class="questioner"><p class="questioner__text">';
-	html += txt + '</p><p class="questioner__time">'
-	html += getHour() + '</p>';
-	
-	$('.box_wrap').append(html);
+	if( arg != 'main') {
+		console.log("지역선택 : ", txt);
+		html = '<div class="questioner"><p class="questioner__text">';
+		html += txt + '</p><p class="questioner__time">'
+		html += getHour() + '</p>';
+		
+		$('.box_wrap').append(html);
+	}
 	
 	$.ajax({
 		url: url,
@@ -189,67 +270,6 @@ function checkTime(i) {
 
 // 메세지 전송 함수
 function doQuestion() {
-//	if(!refreshBool)	return false;
-//	var query = _query ? _query : $('#sentence').val();
-//
-//	var blank_query = query;
-//	blank_query = blank_query.replace(/^\s+|\s+$/g, "");
-//	
-//	if (blank_query != "") {
-//		if (hidden_query) document.getElementById("hidden_query").value = hidden_query;
-//		
-//		if (eventBool) {
-//			eventBool = false;
-//			$("#sentence").on("keydown", function () {
-//				clearInterval(timer);
-//				timer = window.setTimeout(oneWayQuery, userWaitTime);
-//			});
-//		}
-//		if (refreshBool) {
-//			// refreshBool = false;
-//			$("#sentence").on("keydown", function () {
-//				clearInterval(timer_R);
-//				timer_R = window.setTimeout(refreshQuery,userRefreshTime);
-//			});
-//		}
-//		var ajaxSend = true;
-//		var jsonData = undefined;
-//
-//		// input hidden_query text into hidden input tag
-//		var hidden_query = $('#hidden_query').val().length > 0 ? $('#hidden_query').val() : query;
-//		hidden_query = hidden_query.replace(/<(\/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(\/)?>/gi," ");	// html태그 없애기
-//		
-//		if (query.length > 0) {
-//			if (ajaxSend) {
-//				var param = "?query=" + encodeURIComponent(query) + "&sessionKey=" + sessionKey + "&projectId=" + projectId;
-//				$.ajax({
-//					type: "GET",
-//					url: API_URL + "/iChatResponse" + param,
-//					cache: false,
-//					dataType: 'json',
-//					processData: false,
-//					contentType: "application/json",
-//					beforeSend: function beforeSend() {
-//						//질문 박스
-//						var tempStr = "";
-//						tempStr += QUESTION_TOP_HTML;
-//						tempStr += decodeURIComponent(hidden_query);
-//						tempStr += QUESTION_BOTTOM_HTML;
-//						tempStr += LOADING_HTML;
-//
-//						$(".search_boxs").append(tempStr);
-//						$(".time:last").text(getHour());
-//						$('#search_boxs').scrollTop(500);
-//						$("#sentence").val("");
-//						$('#hidden_query').val("");
-//					},
-//					success: ajaxAnswerSuccess,
-//					error: ajaxAnswerError
-//				});
-//			}
-//		}
-//	}
-	
 	console.log($('#sentence').val());
 	
 	var param = {
@@ -289,4 +309,14 @@ function doQuestion() {
 			$('#loading').remove();
 		}
 	})
+}
+
+function removeComma(str) {
+	var n = parseInt(str.replace(/,/g,""));
+
+	return Number(n);
+}
+
+function calculationPercentage(a, b) {
+	return (parseFloat(removeComma(a)/removeComma(b)) * 100).toFixed(1);
 }

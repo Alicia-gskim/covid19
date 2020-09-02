@@ -16,36 +16,45 @@
 			<h1>코로나 알림이</h1>
 			<div class="header__guide">
 				<button type="button">
-					<img src="images/guide_btn.png" onclick="javascript:guideOpen();">
+					<img src="images/guide_btn.png" onclick="guideOpen()">
 				</button>
 			</div>
 		</div>
 		<div class="covid">
 			<div class="total">
 				국내 누적 확진환자
-				<span class="total__number" id="notice_total">18,265</span>
-				<span class="increase" id="notice_increase">(+320)</span>
-				<span class="set_time" id="notice_time">20. 8. 26. (수) 00시 기준</span>
+				<span class="total__number" id="notice_total"></span>
+				<span class="increase" id="notice_increase"></span>
+				<span class="set_time" id="notice_time"></span>
 			</div>
 			<div class="dashboard">
 				<div class="covid__box ing">
 					<p class="title">치료중</p>
-					<p class="number">4,210<span class="percent">(22.1%)</span></p>
-					<div class="plusnumber">+278</div>
+					<p class="number" id="NowCase">
+						<span></span>
+						<span class="percent"></span>
+					</p>
+					<div class="plusnumber" id="NCplus"></div>
 				</div>
 				<div class="covid__box end">
 					<p class="title">격리해제</p>
-					<p class="number">14,551<span class="percent">(76.3%)</span></p>
-					<div class="plusnumber">+90</div>
+					<p class="number" id="TotalRecovered">
+						<span></span>
+						<span class="percent"></span>
+					</p>
+					<div class="plusnumber" id="TRplus"></div>
 				</div>
 				<div class="covid__box deth">
 					<p class="title">사망자</p>
-					<p class="number">316<span class="percent">(1.7%)</span></p>
-					<div class="plusnumber">+3</div>
+					<p class="number" id="TotalDeath">
+						<span></span>
+						<span class="percent"></span>
+					</p>
+					<div class="plusnumber" id="TDplus"></div>
 				</div>
 			</div>
 			<div class="inspection">
-				<p>검사 중 <span id="tests_number">52,795</span> <span id="tests_increase">(+2,433)</span></p>
+				<p>검사 중 <span id="checkingCounter"></span> <span id="tests_increase"></span></p>
 			</div>
 		</div>
 		<p class="info" id="notice_text">*질병관리본부 발표 후 1-2시간 이내에 업데이트되며,증감수는 전일 00시 대비입니다.</p>
@@ -54,7 +63,7 @@
 	
 	<div class="box_wrap">
 		<!-- 기본질문 -->
-		<div class="answer">
+		<!-- <div class="answer">
 			<p onclick="answerClick('/mainAnswer')" class="answer__img"><img src="images/gui1.png" alt="""></p>
 			<div class=" answer__content">
 				<p class="answer__name">코로나알림이</p>
@@ -101,13 +110,6 @@
 							</button>
 						</div>
 					</div>
-					<div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets" style="width:600px;">
-						<span class="swiper-pagination-bullet swiper-pagination-bullet-active"
-								tabindex="0" role="button" aria-label="Go to slide 1">
-						</span>
-					</div>
-					<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-					<br>
 					<div style="font-size:11px;">정보 출처 :
 						<a href="http://www.cdc.go.kr/cdc/" target="_blank" class="btn2 type_b"
 							style="text-decoration:underline;color:#0040ff;">질병관리본부,</a>
@@ -117,51 +119,15 @@
 				</div>
 				<p class="answer__time">오후 10:50</p>
 			</div>
-		</div>
-
+		</div> -->
 	</div>
 
-	<!-- </div> -->
 	<div class="search">
-<!-- 		<form id="question_frm" name="question_frm" method="POST" action="doQuestion()"> -->
-			<div class="search__wrap">
-				<input type="text" class="quesion_input" name="sentence" id="sentence"
-					onkeypress="if(event.keyCode==13) {doQuestion(); return false;}">
-				<input type="text" hidden="hidden" id="hidden_query">
-				<button type="submit" class="btn_send_thema" onclick="doQuestion()">
-					보내기
-				</button>
-			</div>
-<!-- 		</form> -->
+		<div class="search__wrap">
+			<input type="text" class="quesion_input" name="sentence" id="sentence" onkeypress="if(event.keyCode==13) {doQuestion(); return false;}">
+			<input type="text" hidden="hidden" id="hidden_query">
+			<button type="submit" class="btn_send_thema" onclick="doQuestion()">보내기</button>
+		</div>
 	</div>
-	</div>
-	</div>
-
-	<script>
-		var swiper = new Swiper('.swiper-container', {
-			autoHeight: true,
-			pagination: {
-				el: '.swiper-container .swiper-pagination',
-			},
-		});
-		var swiper = new Swiper('.swiper-container2', {
-			autoHeight: true,
-			pagination: {
-				el: '.swiper-container2 .swiper-pagination',
-			},
-		});
-		var swiper = new Swiper('.swiper-container3', {
-			autoHeight: true,
-			pagination: {
-				el: '.swiper-container3 .swiper-pagination',
-			},
-		});
-		var swiper = new Swiper('.swiper-container4', {
-			autoHeight: true,
-			pagination: {
-				el: '.swiper-container4 .swiper-pagination',
-			},
-		});
-	  </script>
 </body>
 </html>
