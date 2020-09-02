@@ -365,10 +365,14 @@ function doQuestion() {
 		success: function(res) {
 			$('html, body').animate({scrollTop: $('.answer:last').offset().top}, 10);
 //			$('.box_wrap').append(res);
-			alert("<<응답받은 결과값>> 1. query : " + res.query + ", 2. url : " + res.url + ", 3. page name : " + res.pgname);
+//			alert("<<응답받은 결과값>> 1. query : " + res.query + ", 2. url : " + res.url + ", 3. page name : " + res.pgname);
 			
-			if( res.isBool ) {
-				answerClick(res.url, res.pgname, uqery);
+			if(res.isBool) {
+				// 상세 지역별 현황
+				getCitiesInfo(res.url, res.pgname);
+			} else {
+				// 그 외
+				answerClick(res.url, res.pgname, uqery);				
 			}
 		},
 		error: function(e) {
