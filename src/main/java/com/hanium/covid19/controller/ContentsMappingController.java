@@ -25,12 +25,12 @@ public class ContentsMappingController {
 	}
 	
 	/**
-	 * 코로나 알림이 - 서울특별시 확진자 현황
+	 * 코로나 알림이 - 선택지역별 확진자 현황 공통 페이지
 	 * @return
 	 */
-	@RequestMapping("/region-seoul")
+	@RequestMapping("/region-city")
 	public String seoul() {
-		return "answer/region/seoul";
+		return "answer/region/city";
 	}
 	
 	/**

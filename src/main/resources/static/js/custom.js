@@ -20,6 +20,7 @@ var LOADING_HTML = ["<ul id='loading' class='answer_box'>", "<li class='name'><i
 var REFRESH_MESSAGE = '{  "message": "오랫동안 대화가 없어 챗봇이 쉬고 있어요😴<br>챗봇과 대화를 다시 시작하시려면 새로고침 후 사용해주세요🙂",  "buttons": {  "type": "refresh",  "button": [  {  "buttonname": "새로고침"  }  ]  }}';
 
 var GET_HEADER_URL = "/info/trend/korea";
+var GET_REGIN_DATA_URL = "/info/trend/cites";
 
 // 사용자 대기 이벤트
 var userWaitTime = 60 * 1000;
@@ -94,7 +95,8 @@ $(function() {
 					},
 					// Setp #3. 초기 메인 답변
 					function (callback) {
-						answerClick('/mainAnswer', 'main')
+						answerClick('/mainAnswer', 'main');
+						callback(null);
 					}
 				],
 				function (err) {
@@ -137,32 +139,101 @@ $(function() {
 	}
 });
 
-//function getCitiesInfo(city) {
-//	
-//	
-//	$.ajax({
-//		url: url,
-//		beforeSend: function beforeSend() {
-//			// 로딩 태그 보여주기
-//			$(".box_wrap").append(LOADING_HTML);
-//		},
-//		success: function(res) {
-//			$('html, body').animate({scrollTop: $('.answer:last').offset().top}, 10);
-//			$('.box_wrap').append(res);
-//			
-//			if( res.match('.info') != null ) {
-//				new Swiper('.info');
-//			}
-//		},
-//		error: function(e) {
-//			console.log("e : ", e);
-//		},
-//		complete: function() {
-//			$(".answer__time:last").text(getHour());
-//			$('#loading').remove();
-//		}
-//	})
-//}
+function getCitiesInfo(mappingView, city) {
+	
+	var cityData = {};
+	async.waterfall(
+			[
+				function (callback) {
+					// Step #1. 선택한 도시의 데이터 조회
+					$.ajax({
+						type: 'POST',
+						dataType: 'json',
+						contentType: 'application/json',
+						cache: false,
+						url: GET_REGIN_DATA_URL,
+						success: function(res) {
+							console.log('all city : ', res);
+							console.log(city +' : '+ res.json[city]);
+							
+							cityData = res.json[city];
+							callback(null);
+						},
+						error: function(e) {
+							console.log("e : ", e);
+							callback(e);
+						}
+					})
+				},
+				function(callback) {
+					console.log("지역선택 : ", cityData.countryName);
+					html = '<div class="questioner"><p class="questioner__text">';
+					html += cityData.countryName + '</p><p class="questioner__time">'
+					html += getHour() + '</p>';
+					
+					$('.box_wrap').append(html);
+					
+					callback(null);
+				},
+				function(callback) {
+					// Step #2. 조회한 도시의 데이터를 바인딩할 화면 표시
+					$.ajax({
+						url: mappingView,
+						beforeSend: function beforeSend() {
+							// 로딩 태그 보여주기
+							$(".box_wrap").append(LOADING_HTML);
+						},
+						success: function(res) {
+							$('html, body').animate({scrollTop: $('.answer:last').offset().top}, 10);
+							$('.box_wrap').append(res);
+							
+							if( res.match('.info') != null ) {
+								new Swiper('.info');
+							}
+							callback(null);
+						},
+						error: function(e) {
+							console.log("e : ", e);
+							callback(e);
+						},
+						complete: function() {
+							$(".answer__time:last").text(getHour());
+							$('#loading').remove();
+						}
+					});
+				},
+				function(callback) {
+					// Step #3. 표시된 화면에 조회한 데이터 바인딩
+					console.log("Async가 잘 되나? : ", cityData);
+					$('.answer:last').find('#city__name').text(cityData.countryName);
+					$('.answer:last').find('#city__totalCase').children('span').text(cityData.totalCase);
+					$('.answer:last').find('#city__case').children('span').text('('+ cityData.newCcase +'/'+ cityData.newFcase +')');
+					$('.answer:last').find('#city__case').children('span').prepend('<b>'+ cityData.newCase +'</b>');
+					$('.answer:last').find('#city__recovered').children('span').text(cityData.recovered);
+					$('.answer:last').find('#city__death').children('span').text(cityData.death);
+					$('.answer:last').find('#city__percentage').children('span').text(cityData.percentage);
+					
+					const link = setLink(city);
+					$('.answer:last').find('#city__link').children('a').attr('href', link);
+					$('.answer:last').find('#city__link span').text(cityData.countryName);
+					
+					callback(null);
+				}
+			],
+			function (err) {
+				if (err) {
+					console.log(err);
+				} else {
+					// 기본 메시지의 시간을 현재 시간으로 변경
+					$(".time:last").text(getHour());
+					// 질문창 포커스
+					$("#sentence").focus();
+				}
+			}
+		);
+	
+	
+}
 
 function answerClick(url, arg) {
 	var txt = "";
@@ -230,7 +301,7 @@ function answerClick(url, arg) {
 			$(".answer__time:last").text(getHour());
 			$('#loading').remove();
 		}
-	});
+	})
 }
 function getHour() {
 	return convert12H(checkTime(new Date().getHours()) + ':' + checkTime(new Date().getMinutes()));
@@ -319,4 +390,64 @@ function removeComma(str) {
 
 function calculationPercentage(a, b) {
 	return (parseFloat(removeComma(a)/removeComma(b)) * 100).toFixed(1);
+}
+
+function setLink(city) {
+	var link = '';
+	
+	switch(city) {
+		case "busan" :
+			link = "http://www.busan.go.kr/corona/index.jsp";
+			break;
+		case "chungbuk" :
+			link = "http://www.chungbuk.go.kr/www/index.do";		
+			break;
+		case "chungnam" :
+			link = "http://www.chungnam.go.kr/";
+			break;
+		case "daegu" :
+			link = "http://www.daegu.go.kr/intro.jsp";
+			break;
+		case "daejeon" :
+			link = "https://www.daejeon.go.kr/corona19/index.do";
+			break;
+		case "gangwon" :
+			link = "http://www.provin.gangwon.kr/covid-19.html";
+			break;
+		case "gwangju" :
+			link = "https://www.gwangju.go.kr/";
+			break;
+		case "gyeongbuk" :
+			link = "http://www.gb.go.kr/Main/index.html";
+			break;
+		case "gyeonggi" :
+			link = "https://www.gg.go.kr/contents/contents.do?ciIdx=1150&menuId=2909";
+			break;
+		case "gyeongnam" :
+			link = "http://xn--19-q81ii1knc140d892b.kr/main/main.do";
+			break;
+		case "incheon" :
+			link = "https://www.incheon.go.kr/health/index";
+			break;
+		case "jeju" :
+			link = "https://www.jeju.go.kr/corona19.jsp";
+			break;
+		case "jeonbuk" :
+			link = "http://www.jeonbuk.go.kr/";
+			break;
+		case "jeonnam" :
+			link = "https://www.jeonnam.go.kr/";
+			break;
+		case "sejong" :
+			link = "https://www.sejong.go.kr/bbs/R3273/list.do;jsessionid=KwNXp1uVMRJV3XiPEwGBVLQgnhUCLZTxNX1qCgoBaWyWEa77V2WEvD51b1aNfDXa.Portal_WAS2_servlet_engine5?cmsNoStr=17465";
+			break;
+		case "ulsan" :
+			link = "http://www.ulsan.go.kr/corona.jsp";
+			break;
+		default:
+			link = "https://www.seoul.go.kr/coronaV/coronaStatus.do";
+			break;
+	}
+	
+	return link;
 }
