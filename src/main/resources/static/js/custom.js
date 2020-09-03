@@ -246,8 +246,6 @@ function getCitiesInfo(mappingView, city, query, type) {
 					if( type == 'click' ){
 						console.log("지역선택 : ", cityData.countryName);
 						setMessage(city, '', type);
-					} else {
-						setMessage(cityData.countryName, '', type);
 					}
 					callback(null);
 				},
