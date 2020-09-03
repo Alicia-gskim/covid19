@@ -28,13 +28,13 @@ public class Covid19TrendCities extends Covid19Trend {
       Object trend = restTemplate.getForObject(serviceURI, Covid19TrendOfCitiesDTO.class);
       trendMap.put("msg", "success");
       trendMap.put("json", trend);
-    }
-    catch(RestClientException e) {
+    } catch(RestClientException e) {
       trendMap.put("msg", "fail");
+    } catch(Exception e) {
+    	trendMap.put("msg", "fail");
     }
-    finally {
-      return trendMap;
-    }
+    
+    return trendMap;
   }
 
   public Map<String, Object> getTrend(String query) {
@@ -44,8 +44,7 @@ public class Covid19TrendCities extends Covid19Trend {
       String sessionId = UUID.randomUUID().toString();
       QueryResult queryResult = null;
 
-      queryResult =
-          DetectIntentTexts.detectIntentTexts("covid-19-chatbot-epfe", query, sessionId, "ko");
+      queryResult = DetectIntentTexts.detectIntentTexts("covid-19-chatbot-epfe", query, sessionId, "ko");
 
       RestTemplate restTemplate = Covid19RestTemplateFactory.getRestTemplateInstance();
       Object trend = restTemplate.getForObject(serviceURI, Covid19TrendOfCitiesDTO.class);
@@ -55,12 +54,12 @@ public class Covid19TrendCities extends Covid19Trend {
       trendMap.put("url", query);
       trendMap.put("isBool", true);
       trendMap.put("pgname", queryResult.getFulfillmentText());
-    }
-    catch(IOException | ApiException | RestClientException e) {
+    } catch(IOException | ApiException | RestClientException e) {
       trendMap.put("msg", "fail");
+    } catch(Exception e) {
+    	trendMap.put("msg", "fail");
     }
-    finally {
-      return trendMap;
-    }
+    
+    return trendMap;
   }
 }

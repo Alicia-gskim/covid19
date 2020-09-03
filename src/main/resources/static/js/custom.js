@@ -80,7 +80,6 @@ $(function() {
 									$('#TotalDeath span:last-child').text('('+ calculationPercentage(jsonData.TotalDeath, jsonData.TotalCase) +'%)');
 									$('#TDplus').text('+' + jsonData.TodayDeath);
 									
-									
 									// 7. 검사결과를 기다리는 사람수
 									$('#checkingCounter').text(jsonData.checkingCounter);
 									
@@ -95,7 +94,36 @@ $(function() {
 					},
 					// Setp #3. 초기 메인 답변
 					function (callback) {
-						answerClick('/mainAnswer', 'main');
+//						answerClick('/mainAnswer', 'main', '', callback);
+						
+						$.ajax({
+							url: '/mainAnswer',
+							beforeSend: function beforeSend() {
+								// 로딩 태그 보여주기
+//								$(".box_wrap").append(LOADING_HTML);
+							},
+							success: function(res) {
+								$('.box_wrap').append(res);
+								
+								if( res.match('.info') != null ) {
+									new Swiper('.info');
+								}
+								$(".answer__time:last").text(getHour());
+								
+								callback(null);
+							},
+							error: function(e) {
+								console.log("e : ", e);
+								
+								$(".answer__time:last").text(getHour());
+								
+								callback(e);
+							}
+						})
+					},
+					function(callback) {
+						$('html, body').animate({scrollTop: $('.answer:last').offset().top}, 10);
+						
 						callback(null);
 					}
 				],
@@ -181,10 +209,9 @@ function getCitiesInfo(mappingView, city) {
 						url: '/region-city',
 						beforeSend: function beforeSend() {
 							// 로딩 태그 보여주기
-							$(".box_wrap").append(LOADING_HTML);
+//							$(".box_wrap").append(LOADING_HTML);
 						},
 						success: function(res) {
-							$('html, body').animate({scrollTop: $('.answer:last').offset().top}, 10);
 							$('.box_wrap').append(res);
 							
 							if( res.match('.info') != null ) {
@@ -198,7 +225,6 @@ function getCitiesInfo(mappingView, city) {
 						},
 						complete: function() {
 							$(".answer__time:last").text(getHour());
-							$('#loading').remove();
 						}
 					});
 				},
@@ -218,6 +244,10 @@ function getCitiesInfo(mappingView, city) {
 					$('.answer:last').find('#city__link span').text(cityData.countryName);
 					
 					callback(null);
+				},
+				function(callback) {
+					$('html, body').animate({scrollTop: $('.answer:last').offset().top}, 10);
+					callback(null);
 				}
 			],
 			function (err) {
@@ -235,9 +265,10 @@ function getCitiesInfo(mappingView, city) {
 	
 }
 
-function answerClick(url, arg, query) {
+function answerClick(url, arg, query, callback) {
 	var txt = "";
-	if(query == undefined) {
+	if(query == undefined || query == '') {
+		// 버튼클릭 or 최초실행시 실행
 		switch(arg) {
 			case "region":				txt = "지역별 확진자현황";			break;
 			case "government":			txt = "보도자료 정부브리핑";			break;
@@ -274,26 +305,26 @@ function answerClick(url, arg, query) {
 			default : txt = "코로나 알림이";								break;
 		}
 	} else {
+		// 메세지 보내기 했을 경우 실행
 		txt = query;
 	}
 	
-	if( arg != 'main') {
+//	if( arg != 'main') {
 		console.log("지역선택 : ", txt);
 		html = '<div class="questioner"><p class="questioner__text">';
 		html += txt + '</p><p class="questioner__time">'
 		html += getHour() + '</p>';
 		
 		$('.box_wrap').append(html);
-	}
+//	}
 	
 	$.ajax({
 		url: url,
 		beforeSend: function beforeSend() {
 			// 로딩 태그 보여주기
-			$(".box_wrap").append(LOADING_HTML);
+//			$(".box_wrap").append(LOADING_HTML);
 		},
 		success: function(res) {
-			$('html, body').animate({scrollTop: $('.answer:last').offset().top}, 10);
 			$('.box_wrap').append(res);
 			
 			if( res.match('.info') != null ) {
@@ -305,7 +336,8 @@ function answerClick(url, arg, query) {
 		},
 		complete: function() {
 			$(".answer__time:last").text(getHour());
-			$('#loading').remove();
+			
+			$('html, body').animate({scrollTop: $('.answer:last').offset().top}, 10);
 		}
 	})
 }
@@ -360,19 +392,28 @@ function doQuestion() {
 		data: JSON.stringify(param),
 		beforeSend: function beforeSend() {
 			//질문 박스
-			$(".box_wrap").append(LOADING_HTML);
+//			$(".box_wrap").append(LOADING_HTML);
 		},
 		success: function(res) {
-			$('html, body').animate({scrollTop: $('.answer:last').offset().top}, 10);
+//			$('html, body').animate({scrollTop: $('.answer:last').offset().top}, 10);
 //			$('.box_wrap').append(res);
 //			alert("<<응답받은 결과값>> 1. query : " + res.query + ", 2. url : " + res.url + ", 3. page name : " + res.pgname);
 			
-			if(res.isBool) {
-				// 상세 지역별 현황
-				getCitiesInfo(res.url, res.pgname);
+			if(res.msg == 'success') {
+				if(res.isBool) {
+					// 상세 지역별 현황
+					getCitiesInfo(res.url, res.pgname);
+				} else {
+					// 그 외
+					answerClick(res.url, res.pgname, query);				
+				}
 			} else {
-				// 그 외
-				answerClick(res.url, res.pgname, uqery);				
+				console.log("입력 메세지 : ", query);
+				html = '<div class="questioner"><p class="questioner__text">';
+				html += query + '</p><p class="questioner__time">'
+				html += getHour() + '</p>';
+				
+				$('.box_wrap').append(html);
 			}
 		},
 		error: function(e) {
@@ -380,7 +421,8 @@ function doQuestion() {
 		},
 		complete: function() {
 			$(".answer__time:last").text(getHour());
-			$('#loading').remove();
+			
+			$('html, body').animate({scrollTop: $('.answer:last').offset().top}, 10);
 		}
 	})
 }
