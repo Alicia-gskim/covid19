@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- 지역별 확진자현황 -->
 <div class="answer">
-	<p onclick="getCitiesInfo('/mainAnswer', 'korea')" class="answer__img"><img src="images/gui1.png" alt=""></p>
+	<p onclick="getCitiesInfo('/mainAnswer', 'korea', '', 'click')" class="answer__img"><img src="images/gui1.png" alt=""></p>
 	<div class=" answer__content">
 		<p class="answer__name">코로나알림이</p>
 		<div class="answer__ask">
@@ -14,109 +14,109 @@
 			<div class="btn_wrap local">
 				<div class="btn_cover">
 <!-- 					<button type="button" onclick="window.open('http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=13&ncvContSeq=&contSeq=&board_id=&gubun=')" class="btn_box"> -->
-					<button type="button" onclick="getCitiesInfo('/region-city', 'korea')" class="btn_box">
+					<button type="button" onclick="getCitiesInfo('/region-city', 'korea', '', 'click')" class="btn_box">
 						<div class="greeting-img">
 							<img src="https://answerny.ai/img/G6_allregion.png">
 						</div>
 						<div class="greeting-contents">전체보기</div>
 					</button>
-					<button type="button" onclick="getCitiesInfo('/region-city', 'seoul')" class="btn_box">
+					<button type="button" onclick="getCitiesInfo('/region-city', 'seoul', '', 'click')" class="btn_box">
 						<div class="greeting-img">
 							<img src="https://answerny.ai/img/G6_seoul.png">
 						</div>
 						<div class="greeting-contents">서울특별시</div>
 					</button>
-					<button type="button" onclick="getCitiesInfo('/region-city', 'busan')" class="btn_box">
+					<button type="button" onclick="getCitiesInfo('/region-city', 'busan', '', 'click')" class="btn_box">
 						<div class="greeting-img">
 							<img src="https://answerny.ai/img/G6_busan.png">
 						</div>
 						<div class="greeting-contents">부산광역시</div>
 					</button>
-					<button type="button" onclick="getCitiesInfo('/region-city', 'daegu')" class="btn_box">
+					<button type="button" onclick="getCitiesInfo('/region-city', 'daegu', '', 'click')" class="btn_box">
 						<div class="greeting-img">
 							<img src="https://answerny.ai/img/G6_daegu.png">
 						</div>
 						<div class="greeting-contents">대구광역시</div>
 					</button>
-					<button type="button" onclick="getCitiesInfo('/region-city', 'incheon')" class="btn_box">
+					<button type="button" onclick="getCitiesInfo('/region-city', 'incheon', '', 'click')" class="btn_box">
 						<div class="greeting-img">
 							<img src="https://answerny.ai/img/G6_incheon.png">
 						</div>
 						<div class="greeting-contents">인천광역시</div>
 					</button>
-					<button type="button" onclick="getCitiesInfo('/region-city', 'gwangju')" class="btn_box">
+					<button type="button" onclick="getCitiesInfo('/region-city', 'gwangju', '', 'click')" class="btn_box">
 						<div class="greeting-img">
 							<img src="https://answerny.ai/img/G6_gwangju.png">
 						</div>
 						<div class="greeting-contents">광주광역시</div>
 					</button>
-					<button type="button" onclick="getCitiesInfo('/region-city', 'daejeon')" class="btn_box">
+					<button type="button" onclick="getCitiesInfo('/region-city', 'daejeon', '', 'click')" class="btn_box">
 						<div class="greeting-img">
 							<img src="https://answerny.ai/img/G6_deajun.png">
 						</div>
 						<div class="greeting-contents">대전광역시</div>
 					</button>
-					<button type="button" onclick="getCitiesInfo('/region-city', 'ulsan')" class="btn_box">
+					<button type="button" onclick="getCitiesInfo('/region-city', 'ulsan', '', 'click')" class="btn_box">
 						<div class="greeting-img">
 							<img src="https://answerny.ai/img/G6_ulsan.png">
 						</div>
 						<div class="greeting-contents">울산광역시</div>
 					</button>
-					<button type="button" onclick="getCitiesInfo('/region-city', 'sejong')" class="btn_box">
+					<button type="button" onclick="getCitiesInfo('/region-city', 'sejong', '', 'click')" class="btn_box">
 						<div class="greeting-img">
 							<img src="https://answerny.ai/img/G6_sejong.png">
 						</div>
 						<div class="greeting-contents">세종시</div>
 					</button>
-					<button type="button" onclick="getCitiesInfo('/region-city', 'gyeonggi')" class="btn_box">
+					<button type="button" onclick="getCitiesInfo('/region-city', 'gyeonggi', '', 'click')" class="btn_box">
 						<div class="greeting-img">
 							<img src="https://answerny.ai/img/G6_gyeonggi.png">
 						</div>
 						<div class="greeting-contents">경기도</div>
 					</button>
-					<button type="button" onclick="getCitiesInfo('/region-city', 'gangwon')" class="btn_box">
+					<button type="button" onclick="getCitiesInfo('/region-city', 'gangwon', '', 'click')" class="btn_box">
 						<div class="greeting-img">
 							<img src="https://answerny.ai/img/G6_gangwon.png">
 						</div>
 						<div class="greeting-contents">강원도</div>
 					</button>
-					<button type="button" onclick="getCitiesInfo('/region-city', 'chungbuk')" class="btn_box">
+					<button type="button" onclick="getCitiesInfo('/region-city', 'chungbuk', '', 'click')" class="btn_box">
 						<div class="greeting-img">
 							<img src="https://answerny.ai/img/G6_chungbuk.png">
 						</div>
 						<div class="greeting-contents">충청북도</div>
 					</button>
-					<button type="button" onclick="getCitiesInfo('/region-city', 'chungnam')" class="btn_box">
+					<button type="button" onclick="getCitiesInfo('/region-city', 'chungnam', '', 'click')" class="btn_box">
 						<div class="greeting-img">
 							<img src="https://answerny.ai/img/G6_chungnam.png">
 						</div>
 						<div class="greeting-contents">충청남도</div>
 					</button>
-					<button type="button" onclick="getCitiesInfo('/region-city', 'jeonbuk')" class="btn_box">
+					<button type="button" onclick="getCitiesInfo('/region-city', 'jeonbuk', '', 'click')" class="btn_box">
 						<div class="greeting-img">
 							<img src="https://answerny.ai/img/G6_jeonbuk.png">
 						</div>
 						<div class="greeting-contents">전라북도</div>
 					</button>
-					<button type="button" onclick="getCitiesInfo('/region-city', 'jeonnam')" class="btn_box">
+					<button type="button" onclick="getCitiesInfo('/region-city', 'jeonnam', '', 'click')" class="btn_box">
 						<div class="greeting-img">
 							<img src="https://answerny.ai/img/G6_jeonnam.png">
 						</div>
 						<div class="greeting-contents">전라남도</div>
 					</button>
-					<button type="button" onclick="getCitiesInfo('/region-city', 'gyeongbuk')" class="btn_box">
+					<button type="button" onclick="getCitiesInfo('/region-city', 'gyeongbuk', '', 'click')" class="btn_box">
 						<div class="greeting-img">
 							<img src="https://answerny.ai/img/G6_gyeongbuk.png">
 						</div>
 						<div class="greeting-contents">경상북도</div>
 					</button>
-					<button type="button" onclick="getCitiesInfo('/region-city', 'gyeongnam')" class="btn_box">
+					<button type="button" onclick="getCitiesInfo('/region-city', 'gyeongnam', '', 'click')" class="btn_box">
 						<div class="greeting-img">
 							<img src="https://answerny.ai/img/G6_gyeongnam.png">
 						</div>
 						<div class="greeting-contents">경상남도</div>
 					</button>
-					<button type="button" onclick="getCitiesInfo('/region-city', 'jeju')" class="btn_box">
+					<button type="button" onclick="getCitiesInfo('/region-city', 'jeju', '', 'click')" class="btn_box">
 						<div class="greeting-img">
 							<img src="https://answerny.ai/img/G6_jeju.png">
 						</div>

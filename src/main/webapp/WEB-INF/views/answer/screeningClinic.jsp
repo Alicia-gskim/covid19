@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- 선별 진료소 -->
 <div class="answer">
-	<p onclick="answerClick('/mainAnswer', 'korea')" class="answer__img"><img src="images/gui1.png" alt=""></p>
+	<p onclick="answerClick('/mainAnswer', 'korea', '', 'click')" class="answer__img"><img src="images/gui1.png" alt=""></p>
 	<div class=" answer__content">
 		<p class="answer__name">코로나알림이</p>
 		<div class="answer__ask clinic">
@@ -18,7 +18,7 @@
 				<a href="https://www.mohw.go.kr/react/popup_200128_3.html" target="_blank">국민안심병원</a>에서 진료받으실 수 있습니다.
 			</p>
 
-			<button onclick="answerClick('/suspectedSymptoms', 'suspected')" class="answer__request">의심증상 확인하기</button>
+			<button onclick="answerClick('/suspectedSymptoms', 'suspected', '', 'click')" class="answer__request">의심증상 확인하기</button>
 		</div>
 		<p class="answer__time">오후 10:50</p>
 	</div>

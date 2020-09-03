@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- 지역현황 답변 -->
 <div class="answer">
-	<p onclick="answerClick('/mainAnswer', 'korea')" class="answer__img"><img src="images/gui1.png" alt=""></p>
+	<p onclick="answerClick('/mainAnswer', 'korea', '', 'click')" class="answer__img"><img src="images/gui1.png" alt=""></p>
 	<div class=" answer__content">
 		<p class="answer__name">코로나알림이</p>
 		<div class="answer__ask">
