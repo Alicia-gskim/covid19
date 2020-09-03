@@ -7,8 +7,8 @@
 		<div class="answer__ask swiper-container5 info">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
-					<p class="info__title">1.집단/다중 이용시설 대을지침</p>
-					<p class="info__text">단 또는 다중이용시설에서 코로나19 유행에 대한 대응 지침을 안내해드릴게요. 아래 버튼을 누르면 지침을 다운받을 수 있는 페이지로 이동됩니다.</p>
+					<p class="info__title">1.집단/다중 이용시설 대응지침</p>
+					<p class="info__text">집단 또는 다중이용시설에서 코로나19 유행에 대한 대응 지침을 안내해드릴게요. 아래 버튼을 누르면 지침을 다운받을 수 있는 페이지로 이동됩니다.</p>
 					<div class="info__contant">
 						<p class="info__subtitle">집단시설 및 다중이용시설 범위/대상</p>
 						<ul>
