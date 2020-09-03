@@ -25,12 +25,12 @@ public class Covid19TrendOfKorea extends Covid19Trend {
       Object trend = restTemplate.getForObject(serviceURI, Covid19TrendOfKoreaDTO.class);
       trendMap.put("msg", "success");
       trendMap.put("json", trend);
-    }
-    catch(RestClientException e) {
+    } catch(RestClientException e) {
       trendMap.put("msg", "fail");
+    } catch(Exception e) {
+    	trendMap.put("msg", "fail");
     }
-    finally {
-      return trendMap;
-    }
+    
+    return trendMap;
   }
 }
