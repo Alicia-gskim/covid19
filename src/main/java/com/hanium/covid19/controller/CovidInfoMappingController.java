@@ -2,6 +2,7 @@ package com.hanium.covid19.controller;
 
 import java.util.Map;
 
+import com.hanium.covid19.service.CallDialogflow;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,11 +37,11 @@ public class CovidInfoMappingController {
 		return result;
 	}
 
-	@PostMapping("/tmp/request")
+	@PostMapping("/info/dialogflow")
 	public ResponseEntity<Map<String, Object>> getTrendOfCities(@RequestBody Map<String, Object> pMap) {
 		String query = (String) pMap.get("query");
-		Covid19TrendCities trend = new Covid19TrendCities();
-		Map<String, Object> result = trend.getTrend(query); // API 호출 결과 리턴
+		CallDialogflow dialogflow = new CallDialogflow();
+		Map<String, Object> result = dialogflow.getTrend(query); // API 호출 결과 리턴
 		return ResponseEntity.ok(result);
 	}
 }

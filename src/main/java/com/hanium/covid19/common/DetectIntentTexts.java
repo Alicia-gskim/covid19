@@ -1,4 +1,4 @@
-package com.hanium.covid19.service;
+package com.hanium.covid19.common;
 
 import com.google.api.gax.rpc.ApiException;
 import com.google.cloud.dialogflow.v2.DetectIntentResponse;
