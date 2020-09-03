@@ -164,7 +164,7 @@ $(function() {
 	}
 });
 
-function setMessage(query, type) {
+function setMessage(arg, query, type) {
 	var txt = "";
 	if( type == 'click' && (query == undefined || query == '') ) {
 		// 버튼클릭 or 최초실행시 실행
@@ -217,7 +217,7 @@ function setMessage(query, type) {
 }
 
 // 상세 지역별 결과 값 표시
-function getCitiesInfo(mappingView, city, type) {
+function getCitiesInfo(mappingView, city, query, type) {
 	var cityData = {};
 	async.waterfall(
 			[
@@ -245,7 +245,9 @@ function getCitiesInfo(mappingView, city, type) {
 				function(callback) {
 					if( type == 'click' ){
 						console.log("지역선택 : ", cityData.countryName);
-						setMessage('', cityData.countryName);
+						setMessage(city, '', type);
+					} else {
+						setMessage(cityData.countryName, '', type);
 					}
 					callback(null);
 				},
@@ -311,7 +313,7 @@ function getCitiesInfo(mappingView, city, type) {
 
 function answerClick(url, arg, query, type) {
 	if( type == 'click' ) {		
-		setMessage(query, type);
+		setMessage(arg, query, type);
 	}
 	
 	$.ajax({
@@ -378,7 +380,7 @@ function doQuestion() {
 	var query = $('#sentence').val();
 	
 	// 입력 메세지 표시
-	setMessage(query, 'input');
+	setMessage('', query, 'input');
 	
 	var param = {
 			"query": query
@@ -396,7 +398,7 @@ function doQuestion() {
 			if(res.msg == 'success') {
 				if(res.isBool) {
 					// 상세 지역별 현황
-					getCitiesInfo(res.url, res.pgname);
+					getCitiesInfo(res.url, res.pgname, query, 'input');
 				} else {
 					// 그 외
 					answerClick(res.url, res.pgname, query, 'input');				
