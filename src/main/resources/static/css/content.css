@@ -15,9 +15,9 @@ header .total .set_time{font-size:1.6667vw;}
 .dashboard .covid__box{position:relative;width:33vw;}
 .dashboard .covid__box::after{content:'';display:block;width:1px;height:80%;background:#222;position:absolute;top:50%;left:0;transform:translateY(-50%)}
 .dashboard .covid__box:first-child::after{display: none;;}
-.dashboard .title{font-size:2.5000vw;font-weight:bold;}
-.dashboard .number{font-size:2.0833vw;padding-top:0.6944vw;}
-.dashboard .plusnumber{font-size:1.6667vw;padding-top:0.6944vw;}
+.dashboard .title{font-size:2.5000vw;font-weight:bold;line-height:1.5em;}
+.dashboard .number{font-size:2.0833vw;padding-top:0.6944vw;;line-height:1.5em;}
+.dashboard .plusnumber{font-size:1.6667vw;padding-top:0.6944vw;;line-height:1.5em;}
 .dashboard .ing .title,.dashboard .ing .number{color:#E83612;}
 .dashboard .end .title,.dashboard .end .number{color:#0051B4;}
 .dashboard .dath .title,.dashboard .dath .number{color:#000;}
@@ -34,7 +34,7 @@ header .info{font-size:1.6667vw;text-indent:4.8611vw;height:4.8611vw;line-height
 
 
 /* answer_box */
-.box_wrap{padding:35vw 4.2800vw 9.0278vw;;width:100%;box-sizing:border-box;margin:0 auto;background:#f5f5f5;}
+.box_wrap{padding:35vw 4.2800vw 9.0278vw;;width:100%;min-height:100vh;display:block;box-sizing:border-box;margin:0 auto;background:#f5f5f5;}
 .answer{display:flex;align-items:flex-start;justify-content:space-between;}
 .answer .answer__img{width:5.5556vw;height:5.5556vw;}
 .answer__content{width:calc(100% - 5.5556vw);padding-left:0.6944vw;}
@@ -180,10 +180,10 @@ header .info{font-size:1.6667vw;text-indent:4.8611vw;height:4.8611vw;line-height
 
 
   /* 채팅검색 영역 */
-  .search{bottom:0;left:0;width:100%;background:#f5f5f5;padding:20px;}
+  .search{bottom:0;left:50%;transform: translateX(-50%);width:100%;max-width:720px;background:#f5f5f5;padding:20px;}
 
-  .search__wrap input{width:calc(100% - 216px);border:1px solid #ddd;border-radius:14px 0 0 14px;border-right:0;height:90px;line-height:90px;text-indent:30px;font-size:24px;}
-  .search__wrap button{width:216px;height:90px;line-height:90px;border:1px solid #ddd;font-size:24px;border-radius:0 14px 14px 0;}
+  .search__wrap input{width:calc(100% - 216px);border:1px solid #ddd;border-radius:14px 0 0 14px;border-right:0;height:50px;line-height:50px;text-indent:30px;font-size:24px;}
+  .search__wrap button{width:216px;height:50px;line-height:50px;border:1px solid #ddd;font-size:24px;border-radius:0 14px 14px 0;}
 
 
   /* answer_box */
