@@ -131,4 +131,9 @@ public class ContentsMappingController {
 	public String groupFacility() {
 		return "answer/target/groupFacility";
 	}
+	
+	@RequestMapping("/nomatch")
+	public String noMatch() {
+		return "answer/noMatch";
+	}
 }

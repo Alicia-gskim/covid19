@@ -94,8 +94,6 @@ $(function() {
 					},
 					// Setp #3. 초기 메인 답변
 					function (callback) {
-//						answerClick('/mainAnswer', 'main', '', callback);
-						
 						$.ajax({
 							url: '/mainAnswer',
 							beforeSend: function beforeSend() {
@@ -108,16 +106,15 @@ $(function() {
 								if( res.match('.info') != null ) {
 									new Swiper('.info');
 								}
-								$(".answer__time:last").text(getHour());
 								
 								callback(null);
 							},
 							error: function(e) {
 								console.log("e : ", e);
-								
-								$(".answer__time:last").text(getHour());
-								
 								callback(e);
+							},
+							complete: function() {
+								$(".answer__time:last").text(getHour());
 							}
 						})
 					},
@@ -265,7 +262,7 @@ function getCitiesInfo(mappingView, city) {
 	
 }
 
-function answerClick(url, arg, query, callback) {
+function answerClick(url, arg, query) {
 	var txt = "";
 	if(query == undefined || query == '') {
 		// 버튼클릭 or 최초실행시 실행
@@ -395,8 +392,6 @@ function doQuestion() {
 //			$(".box_wrap").append(LOADING_HTML);
 		},
 		success: function(res) {
-//			$('html, body').animate({scrollTop: $('.answer:last').offset().top}, 10);
-//			$('.box_wrap').append(res);
 //			alert("<<응답받은 결과값>> 1. query : " + res.query + ", 2. url : " + res.url + ", 3. page name : " + res.pgname);
 			
 			if(res.msg == 'success') {
@@ -414,15 +409,20 @@ function doQuestion() {
 				html += getHour() + '</p>';
 				
 				$('.box_wrap').append(html);
+				
+				setNoMatchInfo();
 			}
 		},
 		error: function(e) {
 			console.log("e : ", e);
 		},
 		complete: function() {
+			$('#sentence').val('');
+			
 			$(".answer__time:last").text(getHour());
 			
 			$('html, body').animate({scrollTop: $('.answer:last').offset().top}, 10);
+			
 		}
 	})
 }
@@ -435,6 +435,21 @@ function removeComma(str) {
 
 function calculationPercentage(a, b) {
 	return (parseFloat(removeComma(a)/removeComma(b)) * 100).toFixed(1);
+}
+
+function setNoMatchInfo() {
+	$.ajax({
+		url: '/nomatch',
+		success: function(res) {
+			$('.box_wrap').append(res);
+		},
+		error: function(e) {
+			console.log(e);
+		},
+		complete: function() {
+			$(".answer__time:last").text(getHour());
+		}
+	})
 }
 
 function setLink(city) {
