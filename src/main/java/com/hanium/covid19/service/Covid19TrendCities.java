@@ -11,14 +11,22 @@ import org.springframework.web.client.RestTemplate;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 시도별발생동향 API 호출 클래스
+ */
 @Service
 public class Covid19TrendCities extends Covid19Trend {
-  String serviceURI = CommonKeys.trendOfCitiesURL + CommonKeys.serviceAPIKey;
+  String serviceURI = CommonKeys.trendOfCitiesURL + CommonKeys.serviceAPIKey; // 시도별 발생동향 호출 주소
 
+  /**
+   * 시도별발생동향 API 호출 결과를 리턴
+   */
   @Override
   public Map<String, Object> getTrend() {
     Map<String, Object> trendMap = new HashMap<String, Object>();
 
+    // 코로나19 Open API를 호출하여 시도별 발생동향을 받는다.
+    // 호출결과를 Covid19TrendOfCitiesDTO로 매핑한다.
     try {
       RestTemplate restTemplate = Covid19RestTemplateFactory.getRestTemplateInstance();
       Object trend = restTemplate.getForObject(serviceURI, Covid19TrendOfCitiesDTO.class);

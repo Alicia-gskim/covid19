@@ -18,8 +18,12 @@ import com.hanium.covid19.service.Covid19TrendOfKorea;
  */
 @RestController
 public class CovidInfoMappingController {
-	
-	// 국내 발생 동향 호출
+
+	/**
+	 * 	국내 발생 동향 호출
+	 * 	
+	 * @return 국내 발생 동향
+	 */
 	@RequestMapping("/info/trend/korea")
 	@ResponseBody
 	public Map<String, Object> getTrendOfKorea() {
@@ -28,7 +32,11 @@ public class CovidInfoMappingController {
 		return result;
 	}
 
-	// 시도별 발생 동향 호출
+	/**
+	 * 시도별 발생 동향 호출
+	 *
+	 * @return 시도별 발생 동향
+	 */ 
 	@RequestMapping("/info/trend/cites")
 	@ResponseBody
 	public Map<String, Object> getTrendOfCities() {
@@ -37,6 +45,13 @@ public class CovidInfoMappingController {
 		return result;
 	}
 
+	/**
+	 * Dialogflow 호출
+	 * 
+	 * @param pMap <key, value> => <"query", "사용자 입력 질문">
+	 * 
+	 * @return Dialogflow 결과   
+	 */
 	@PostMapping("/info/dialogflow")
 	public ResponseEntity<Map<String, Object>> getTrendOfCities(@RequestBody Map<String, Object> pMap) {
 		String query = (String) pMap.get("query");

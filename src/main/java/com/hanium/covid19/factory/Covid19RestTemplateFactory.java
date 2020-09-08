@@ -8,7 +8,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * Rest Template 싱글톤 구현
  * Rest 호출을 위한 팩토리로
- * 인스턴스 하나만 생성하여
+ * 인스턴스 하나만 생성
  */
 public class Covid19RestTemplateFactory {
   private volatile static RestTemplate restTemplate = null;
