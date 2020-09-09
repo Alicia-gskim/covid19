@@ -44,10 +44,8 @@ public class CallDialogflow {
       // 질문을 이해 했을
       else {
         String splitText[] = fulfillmentText.split(",");
-        String answer = splitText[0];
-        String type = splitText[1];
 
-        if(type.equals("trend")) {
+        if(splitText[1].equals("trend")) {
           RestTemplate restTemplate = Covid19RestTemplateFactory.getRestTemplateInstance();
           Object trend = restTemplate.getForObject(serviceURI, Covid19TrendOfCitiesDTO.class);
 
@@ -55,15 +53,15 @@ public class CallDialogflow {
           trendMap.put("isBool", true);
           trendMap.put("query", query);
           trendMap.put("url", query);
-          trendMap.put("pgname", answer);
+          trendMap.put("pgname", splitText[0]);
           trendMap.put("json", trend);
         }
         else {
           trendMap.put("msg", "success");
           trendMap.put("isBool", false);
           trendMap.put("query", query);
-          trendMap.put("url", "/governmentBriefing");
-          trendMap.put("pgname", answer);
+          trendMap.put("url", splitText[0]);
+          trendMap.put("pgname", splitText[1]);
           trendMap.put("json", "");
         }
 
