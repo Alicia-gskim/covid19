@@ -21,7 +21,7 @@ import java.util.UUID;
  */
 @Service
 public class CallDialogflow {
-  String serviceURI = CommonKeys.trendOfCitiesURL + CommonKeys.serviceAPIKey;
+  String serviceURI = CommonKeys.trendOfCitiesURL + CommonKeys.serviceAPIKey; // 시도별 발생동향 호출 주소
 
   /**
    * 질문에 대한 코로나19정보를 리턴
@@ -82,8 +82,6 @@ public class CallDialogflow {
           trendMap.put("pgname", splitText[1]); // UI에서 매칭될 페이지 이름
           trendMap.put("json", "");
         }
-
-        return trendMap;
       }
     }
     catch(IOException | ApiException | RestClientException e) {

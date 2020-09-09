@@ -18,7 +18,7 @@ import java.io.IOException;
 public class DetectIntentTexts {
 
   /**
-   * Dialogflow API 호출 클래스
+   * Dialogflow API 호출
    *
    * @param projectId Dialogflow 프로젝트 ID
    * @param texts UI에서 사용자가 입력한 질문
