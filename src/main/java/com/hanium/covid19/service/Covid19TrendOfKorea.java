@@ -28,10 +28,12 @@ public class Covid19TrendOfKorea extends Covid19Trend {
     // 코로나19 Open API를 호출하여 국내 발생동향을 받는다.
     // 호출결과를 Covid19TrendOfKoreaDTO로 매핑한다.
     try {
+      // 싱글톤패턴으로 구현된 Rest API 호출 인스턴스를 가져옴.
       RestTemplate restTemplate = Covid19RestTemplateFactory.getRestTemplateInstance();
+      // 시도별발생동향 결과를 DTO 오브젝트로 생성
       Object trend = restTemplate.getForObject(serviceURI, Covid19TrendOfKoreaDTO.class);
       trendMap.put("msg", "success");
-      trendMap.put("json", trend);
+      trendMap.put("json", trend); // 국내 코로나19 정보
     } catch(RestClientException e) {
       trendMap.put("msg", "fail");
     } catch(Exception e) {
