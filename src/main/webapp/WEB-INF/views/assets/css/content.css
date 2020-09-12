@@ -91,6 +91,14 @@ header .info{font-size:1.6667vw;text-indent:4.8611vw;height:4.8611vw;line-height
 .info .link{margin:2.0833vw 0;}
 .answer__ask.info{padding-bottom:5.5556vw;position:relative;}
 
+.help{position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(0,0,0,0.7);z-index: 180;}
+.help__wrap{width:91.6667vw;max-width:720px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);}
+.help__wrap .btn_close{position:absolute;top:-6.9444vw;right:0;padding:0 2.3889vw;height:6.9444vw;line-height:6.9444vw;background:#fff;border:1px solid #000;font-size:1.9444vw;}
+.help__wrap .help__title{font-size:4.8611vw;color:#fff;text-align:center;}
+.help__info{padding-top:3.4722vw;}
+.help__subTit{font-size:3.4722vw;padding:2.0833vw;border:1px solid #fff;border-radius:5.0833vw;color:#fff;;}
+.help__text{padding:2.7778vw 5.5556vw;font-size:2.2222vw;color:#fff;}
+.help__img{padding-top:2.7778vw;}
 @keyframes bouncedelay {
   0% {
     bottom: 0;
@@ -178,7 +186,7 @@ header .info{font-size:1.6667vw;text-indent:4.8611vw;height:4.8611vw;line-height
   header .inspection{height:30px;line-height:30px;font-size:14px;}
   header .info{font-size:12px;text-indent:30px;height:30px;line-height:30px;}
 
-
+  
   /* 채팅검색 영역 */
   .search{bottom:0;left:50%;transform: translateX(-50%);width:100%;max-width:720px;background:#f5f5f5;padding:20px;}
 
@@ -240,4 +248,13 @@ header .info{font-size:1.6667vw;text-indent:4.8611vw;height:4.8611vw;line-height
   .denger{margin-bottom:20px;font-size:12px;}
   .info .link{margin:30px 0;}
   .answer__ask.info{padding-bottom:80px;}
+
+  .help{top:0;left:0;width:100%;height:100vh;background:rgba(0,0,0,0.7);}
+  .help__wrap{width:660px;max-width:720px;top:50%;left:50%;transform:translate(-50%,-50%);}
+  .help__wrap .btn_close{top:-50px;right:0;padding:0 17px;height:50px;line-height:50px;background:#fff;border:1px solid #000;font-size:14px;}
+  .help__wrap .help__title{font-size:35px;}
+  .help__info{padding-top:25px;}
+  .help__subTit{font-size:25px;padding:15px;border:1px solid #fff;border-radius:37px;;}
+  .help__text{padding:20px 40px;font-size:16px;}
+  .help__img{padding-top:20px;}
 }
