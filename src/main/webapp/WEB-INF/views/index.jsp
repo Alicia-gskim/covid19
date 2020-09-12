@@ -60,6 +60,7 @@
 		<p class="info" id="notice_text">*질병관리본부 발표 후 1-2시간 이내에 업데이트되며,증감수는 전일 00시 대비입니다.</p>
 	</header>
 	<!-- //header -->
+	<%@ include file="./help.jsp" %>
 	
 	<div class="box_wrap">
 		<!-- 기본질문 -->

@@ -35,9 +35,6 @@ var buttonHeightCnt = 0;
 $(function() {
 	$(document).ready(function() {
 		
-		
-		
-//		postCallAjax(API_URL + "/sessionRequest")
 		async.waterfall(
 				[
 					// Step #1. 세션키 가져오기
@@ -97,8 +94,6 @@ $(function() {
 						$.ajax({
 							url: '/mainAnswer',
 							beforeSend: function beforeSend() {
-								// 로딩 태그 보여주기
-//								$(".box_wrap").append(LOADING_HTML);
 							},
 							success: function(res) {
 								$('.box_wrap').append(res);
@@ -163,6 +158,13 @@ $(function() {
 		}
 	}
 });
+
+function guideOpen() {
+	$('.help').show();
+}
+function guideClose() {
+	$('.help').hide();
+}
 
 function setMessage(arg, query, type) {
 	var txt = "";
