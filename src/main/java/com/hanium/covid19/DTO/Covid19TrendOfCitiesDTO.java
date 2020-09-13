@@ -1,13 +1,11 @@
 package com.hanium.covid19.DTO;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Data;
 
 /**
  * 시도별 동향(http://api.corona-19.kr/korea/contry/new/) 호출 결과 매핑 DTO
  * 프론트에서 이 객채를 리턴 받음
  */
-@Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Covid19TrendOfCitiesDTO {
   private Items quarantine; // 검역
@@ -32,7 +30,6 @@ public class Covid19TrendOfCitiesDTO {
   private String resultMessage; // 정상처리: (정상 처리되었습니다.) / 오류(권한이 없거나 잘못된 키 입니다. "github.com/dhlife09/Corona-19-API"에 방문하세요.)
   private String resultCode; // 응답코드, 정상 0, 비정상 401
 
-  @Data
   @JsonIgnoreProperties(ignoreUnknown = true)
   public class Items {
     private String newCcase; // 전일 대비 증감 - 지역 발생
@@ -43,6 +40,181 @@ public class Covid19TrendOfCitiesDTO {
     private String totalCase; // 확진자 수
     private String newCase; // 신규확진자 수
     private String countryName; // 시도명(지역명)
+    
+	public String getNewCcase() {
+		return newCcase;
+	}
+	public void setNewCcase(String newCcase) {
+		this.newCcase = newCcase;
+	}
+	public String getNewFcase() {
+		return newFcase;
+	}
+	public void setNewFcase(String newFcase) {
+		this.newFcase = newFcase;
+	}
+	public String getPercentage() {
+		return percentage;
+	}
+	public void setPercentage(String percentage) {
+		this.percentage = percentage;
+	}
+	public String getDeath() {
+		return death;
+	}
+	public void setDeath(String death) {
+		this.death = death;
+	}
+	public String getRecovered() {
+		return recovered;
+	}
+	public void setRecovered(String recovered) {
+		this.recovered = recovered;
+	}
+	public String getTotalCase() {
+		return totalCase;
+	}
+	public void setTotalCase(String totalCase) {
+		this.totalCase = totalCase;
+	}
+	public String getNewCase() {
+		return newCase;
+	}
+	public void setNewCase(String newCase) {
+		this.newCase = newCase;
+	}
+	public String getCountryName() {
+		return countryName;
+	}
+	public void setCountryName(String countryName) {
+		this.countryName = countryName;
+	}
   }
 
+	public Items getQuarantine() {
+		return quarantine;
+	}
+	public void setQuarantine(Items quarantine) {
+		this.quarantine = quarantine;
+	}
+	public Items getJeju() {
+		return jeju;
+	}
+	public void setJeju(Items jeju) {
+		this.jeju = jeju;
+	}
+	public Items getGyeongnam() {
+		return gyeongnam;
+	}
+	public void setGyeongnam(Items gyeongnam) {
+		this.gyeongnam = gyeongnam;
+	}
+	public Items getGyeongbuk() {
+		return gyeongbuk;
+	}
+	public void setGyeongbuk(Items gyeongbuk) {
+		this.gyeongbuk = gyeongbuk;
+	}
+	public Items getJeonnam() {
+		return jeonnam;
+	}
+	public void setJeonnam(Items jeonnam) {
+		this.jeonnam = jeonnam;
+	}
+	public Items getJeonbuk() {
+		return jeonbuk;
+	}
+	public void setJeonbuk(Items jeonbuk) {
+		this.jeonbuk = jeonbuk;
+	}
+	public Items getChungnam() {
+		return chungnam;
+	}
+	public void setChungnam(Items chungnam) {
+		this.chungnam = chungnam;
+	}
+	public Items getChungbuk() {
+		return chungbuk;
+	}
+	public void setChungbuk(Items chungbuk) {
+		this.chungbuk = chungbuk;
+	}
+	public Items getGangwon() {
+		return gangwon;
+	}
+	public void setGangwon(Items gangwon) {
+		this.gangwon = gangwon;
+	}
+	public Items getGyeonggi() {
+		return gyeonggi;
+	}
+	public void setGyeonggi(Items gyeonggi) {
+		this.gyeonggi = gyeonggi;
+	}
+	public Items getSejong() {
+		return sejong;
+	}
+	public void setSejong(Items sejong) {
+		this.sejong = sejong;
+	}
+	public Items getUlsan() {
+		return ulsan;
+	}
+	public void setUlsan(Items ulsan) {
+		this.ulsan = ulsan;
+	}
+	public Items getDaejeon() {
+		return daejeon;
+	}
+	public void setDaejeon(Items daejeon) {
+		this.daejeon = daejeon;
+	}
+	public Items getGwangju() {
+		return gwangju;
+	}
+	public void setGwangju(Items gwangju) {
+		this.gwangju = gwangju;
+	}
+	public Items getIncheon() {
+		return incheon;
+	}
+	public void setIncheon(Items incheon) {
+		this.incheon = incheon;
+	}
+	public Items getDaegu() {
+		return daegu;
+	}
+	public void setDaegu(Items daegu) {
+		this.daegu = daegu;
+	}
+	public Items getBusan() {
+		return busan;
+	}
+	public void setBusan(Items busan) {
+		this.busan = busan;
+	}
+	public Items getSeoul() {
+		return seoul;
+	}
+	public void setSeoul(Items seoul) {
+		this.seoul = seoul;
+	}
+	public Items getKorea() {
+		return korea;
+	}
+	public void setKorea(Items korea) {
+		this.korea = korea;
+	}
+	public String getResultMessage() {
+		return resultMessage;
+	}
+	public void setResultMessage(String resultMessage) {
+		this.resultMessage = resultMessage;
+	}
+	public String getResultCode() {
+		return resultCode;
+	}
+	public void setResultCode(String resultCode) {
+		this.resultCode = resultCode;
+	}
 }
