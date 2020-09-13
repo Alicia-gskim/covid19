@@ -91,130 +91,87 @@ public class Covid19TrendOfCitiesDTO {
 	}
   }
 
-	public Items getQuarantine() {
-		return quarantine;
-	}
-	public void setQuarantine(Items quarantine) {
-		this.quarantine = quarantine;
-	}
-	public Items getJeju() {
-		return jeju;
-	}
-	public void setJeju(Items jeju) {
-		this.jeju = jeju;
-	}
-	public Items getGyeongnam() {
-		return gyeongnam;
-	}
-	public void setGyeongnam(Items gyeongnam) {
-		this.gyeongnam = gyeongnam;
-	}
-	public Items getGyeongbuk() {
-		return gyeongbuk;
-	}
-	public void setGyeongbuk(Items gyeongbuk) {
-		this.gyeongbuk = gyeongbuk;
-	}
-	public Items getJeonnam() {
-		return jeonnam;
-	}
-	public void setJeonnam(Items jeonnam) {
-		this.jeonnam = jeonnam;
-	}
-	public Items getJeonbuk() {
-		return jeonbuk;
-	}
-	public void setJeonbuk(Items jeonbuk) {
-		this.jeonbuk = jeonbuk;
-	}
-	public Items getChungnam() {
-		return chungnam;
-	}
-	public void setChungnam(Items chungnam) {
-		this.chungnam = chungnam;
-	}
-	public Items getChungbuk() {
-		return chungbuk;
-	}
-	public void setChungbuk(Items chungbuk) {
-		this.chungbuk = chungbuk;
-	}
-	public Items getGangwon() {
-		return gangwon;
-	}
-	public void setGangwon(Items gangwon) {
-		this.gangwon = gangwon;
-	}
-	public Items getGyeonggi() {
-		return gyeonggi;
-	}
-	public void setGyeonggi(Items gyeonggi) {
-		this.gyeonggi = gyeonggi;
-	}
-	public Items getSejong() {
-		return sejong;
-	}
-	public void setSejong(Items sejong) {
-		this.sejong = sejong;
-	}
-	public Items getUlsan() {
-		return ulsan;
-	}
-	public void setUlsan(Items ulsan) {
-		this.ulsan = ulsan;
-	}
-	public Items getDaejeon() {
-		return daejeon;
-	}
-	public void setDaejeon(Items daejeon) {
-		this.daejeon = daejeon;
-	}
-	public Items getGwangju() {
-		return gwangju;
-	}
-	public void setGwangju(Items gwangju) {
-		this.gwangju = gwangju;
-	}
-	public Items getIncheon() {
-		return incheon;
-	}
-	public void setIncheon(Items incheon) {
-		this.incheon = incheon;
-	}
-	public Items getDaegu() {
-		return daegu;
-	}
-	public void setDaegu(Items daegu) {
-		this.daegu = daegu;
-	}
-	public Items getBusan() {
-		return busan;
-	}
-	public void setBusan(Items busan) {
-		this.busan = busan;
-	}
-	public Items getSeoul() {
-		return seoul;
-	}
-	public void setSeoul(Items seoul) {
-		this.seoul = seoul;
-	}
-	public Items getKorea() {
-		return korea;
-	}
-	public void setKorea(Items korea) {
-		this.korea = korea;
-	}
-	public String getResultMessage() {
-		return resultMessage;
-	}
-	public void setResultMessage(String resultMessage) {
-		this.resultMessage = resultMessage;
-	}
-	public String getResultCode() {
-		return resultCode;
-	}
-	public void setResultCode(String resultCode) {
-		this.resultCode = resultCode;
-	}
+  public Items getQuarantine() {
+    return quarantine;
+  }
+
+  public Items getJeju() {
+    return jeju;
+  }
+
+  public Items getGyeongnam() {
+    return gyeongnam;
+  }
+
+  public Items getGyeongbuk() {
+    return gyeongbuk;
+  }
+
+  public Items getJeonnam() {
+    return jeonnam;
+  }
+
+  public Items getJeonbuk() {
+    return jeonbuk;
+  }
+
+  public Items getChungnam() {
+    return chungnam;
+  }
+
+  public Items getChungbuk() {
+    return chungbuk;
+  }
+
+  public Items getGangwon() {
+    return gangwon;
+  }
+
+  public Items getGyeonggi() {
+    return gyeonggi;
+  }
+
+  public Items getSejong() {
+    return sejong;
+  }
+
+  public Items getUlsan() {
+    return ulsan;
+  }
+
+  public Items getDaejeon() {
+    return daejeon;
+  }
+
+  public Items getGwangju() {
+    return gwangju;
+  }
+
+  public Items getIncheon() {
+    return incheon;
+  }
+
+  public Items getDaegu() {
+    return daegu;
+  }
+
+  public Items getBusan() {
+    return busan;
+  }
+
+  public Items getSeoul() {
+    return seoul;
+  }
+
+  public Items getKorea() {
+    return korea;
+  }
+
+  public String getResultMessage() {
+    return resultMessage;
+  }
+
+  public String getResultCode() {
+    return resultCode;
+  }
 }
