@@ -2,13 +2,13 @@ package com.hanium.covid19.DTO;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
+//import lombok.Data;
 
 /**
  * 국내 동향(http://api.corona-19.kr/korea/) 호출 결과 매핑 DTO
  * 프론트에서 이 객채를 리턴 받음
  */
-@Data
+//@Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Covid19TrendOfKoreaDTO {
   private String resultCode; // 응답코드, 정상 0, 비정상 401
@@ -50,4 +50,120 @@ public class Covid19TrendOfKoreaDTO {
   private String TotalCaseBefore; // 전날 대비 환자수
   private String updateTime; // 정보 업데이트 기준(코로나바이러스감염증-19 국내 발생현황 (4.5. 00시 기준))
   private String resultMessage; // API 처리결과(정상처리: (정상 처리되었습니다.) / 오류(권한이 없거나 잘못된 키 입니다. "github.com/dhlife09/Corona-19-API"에 방문하세요.))
+
+  public String getResultCode() {
+    return resultCode;
+  }
+
+  public String getTotalCase() {
+    return TotalCase;
+  }
+
+  public String getTotalRecovered() {
+    return TotalRecovered;
+  }
+
+  public String getTotalDeath() {
+    return totalDeath;
+  }
+
+  public String getNowCase() {
+    return nowCase;
+  }
+
+  public String getCity1n() {
+    return city1n;
+  }
+
+  public String getCity2n() {
+    return city2n;
+  }
+
+  public String getCity3n() {
+    return city3n;
+  }
+
+  public String getCity4n() {
+    return city4n;
+  }
+
+  public String getCity5n() {
+    return city5n;
+  }
+
+  public String getCity1p() {
+    return city1p;
+  }
+
+  public String getCity2p() {
+    return city2p;
+  }
+
+  public String getCity3p() {
+    return city3p;
+  }
+
+  public String getCity4p() {
+    return city4p;
+  }
+
+  public String getCity5p() {
+    return city5p;
+  }
+
+  public double getRecoveredPercentage() {
+    return recoveredPercentage;
+  }
+
+  public double getDeathPercentage() {
+    return deathPercentage;
+  }
+
+  public String getCheckingCounter() {
+    return checkingCounter;
+  }
+
+  public String getCheckingPercentage() {
+    return checkingPercentage;
+  }
+
+  public String getCaseCount() {
+    return caseCount;
+  }
+
+  public String getCasePercentage() {
+    return casePercentage;
+  }
+
+  public String getNotcaseCount() {
+    return notcaseCount;
+  }
+
+  public String getNotcasePercentage() {
+    return notcasePercentage;
+  }
+
+  public String getTotalChecking() {
+    return TotalChecking;
+  }
+
+  public String getTodayRecovered() {
+    return TodayRecovered;
+  }
+
+  public String getTodayDeath() {
+    return TodayDeath;
+  }
+
+  public String getTotalCaseBefore() {
+    return TotalCaseBefore;
+  }
+
+  public String getUpdateTime() {
+    return updateTime;
+  }
+
+  public String getResultMessage() {
+    return resultMessage;
+  }
 }
